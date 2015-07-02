@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_color_mainstyle" >
+
+     <LinearLayout
+        android:layout_width="49dp"
+        android:layout_height="40dp"
+        android:layout_gravity="right|center"
+        android:background="@drawable/border_right" >
+
+        <Button
+            android:id="@+id/controlBackBtn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/b_back"
+            android:textColor="@color/font_color_white"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:layout_marginLeft="3dp" />
+    </LinearLayout>
+    
+  <LinearLayout
+        android:id="@+id/gotopage_layout" 
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_weight="0.21" >
+
+        <Button android:id="@+id/titleCenter" 
+            android:background="@color/bg_color_mainstyle" 
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Page" 
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/font_color_white"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_marginRight="2dp"
+           />
+         <Button
+            android:id="@+id/controlGotoPageBtn"
+            style="@style/button_text"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center|center_horizontal"
+            android:background="@drawable/b_more" />
+    </LinearLayout>
+
+  <!--  <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="40dp"
+       android:layout_gravity="right|center">
+	        <Button
+	           android:id="@+id/imageDispStatusId"
+	           style="@style/button_text_2"
+	           android:layout_width="32dp"
+	           android:layout_height="32dp"
+	           android:layout_gravity="right|center"
+	           android:background="@drawable/b_bookmark" 
+	           android:layout_marginLeft="15dp" 
+	           />
+          
+     </LinearLayout> -->
+     
+    <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="40dp"
+       android:layout_gravity="right|center" >
+          <Button
+                android:id="@+id/controlRefreshBtn"
+                style="@style/button_text"
+                android:layout_width="36dp"
+                android:layout_height="32dp"
+                android:layout_gravity="right|center"
+                android:background="@drawable/b_refresh"
+                android:layout_marginLeft="8dp"  />
+     </LinearLayout>
+     
+    <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="40dp"
+       android:layout_gravity="right|center"
+       android:background="@drawable/border_left" >
+          <Button
+                android:id="@+id/controlConfigBtn"
+                style="@style/button_text"
+                android:layout_width="36dp"
+                android:layout_height="32dp"
+                android:layout_gravity="right|center"
+                android:background="@drawable/b_more"
+                android:layout_marginLeft="8dp"  />
+     </LinearLayout>
+</LinearLayout>

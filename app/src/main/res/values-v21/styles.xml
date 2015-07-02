@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:Theme.Material">
+       <item name="android:windowActionBar">false</item>
+       <item name="android:windowNoTitle">false</item>
+        
+        <!-- <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="android:textColorPrimary">@color/text</item> -->
+    </style>
+    
+    <!-- Custom Title -->
+    <style name="CustomTitleHideTheme" parent="@style/AppTheme"> 
+         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>  
+        <item name="android:windowTitleSize">0dip</item> 
+    </style> 
+    
+    <style name="CustomTitleTheme" parent="@style/AppTheme"> 
+        <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>  
+        <item name="android:windowTitleSize">50dip</item>
+    </style> 
+    
+    <style name="CustomTitleSmallTheme" parent="@style/AppTheme"> 
+        <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>  
+        <item name="android:windowTitleSize">50dip</item>
+    </style> 
+    
+    <style name="WindowTitleBackground">     
+        <item name="android:background">@color/bg_color_mainstyle</item>                   
+    </style>
+    
+    <style name="CustomTitleWithControlTheme" parent="@style/AppTheme"> 
+         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>  
+        <item name="android:windowTitleSize">50dip</item> 
+    </style> 
+    <!-- Custom Title -->
+     
+	<style name="item_common_text">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+	<style name="item_common_title" parent="@style/item_common_text">
+        <item name="android:textSize">18dp</item>
+    </style>
+    <style name="item_common_pubdate" parent="@style/item_common_text">
+        <item name="android:textSize">14dp</item>
+    </style>
+    <style name="item_common_fav_icon">
+        <item name="android:paddingRight">15dp</item>
+    </style>
+    
+	<style name="item_notselected_title" parent="@style/item_common_title">
+        <item name="android:textColor">@color/item_notselected_text</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="item_selected_title" parent="@style/item_common_title">
+        <item name="android:textColor">@color/item_selected_text</item>
+    </style>
+    
+    <style name="item_notselected_favorite_title" parent="@style/item_notselected_title">
+        <item name="android:paddingBottom">0dp</item>
+    </style>
+    <style name="item_selected_favorite_title" parent="@style/item_selected_title">
+        <item name="android:paddingBottom">0dp</item>
+    </style>
+    
+    <style name="item_notselected_pubdate" parent="@style/item_common_pubdate">
+        <item name="android:textColor">@color/item_notselected_text</item>
+    </style>
+    <style name="item_selected_pubdate" parent="@style/item_common_pubdate">
+        <item name="android:textColor">@color/item_selected_text</item>
+    </style>
+    
+    <style name="item_view_common_padding">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+    </style>
+    <style name="item_view_title" parent="@style/item_view_common_padding">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:textColor">@color/font_color_night</item>
+    </style>
+    <style name="item_view_subtitle_text" parent="@style/item_view_common_padding">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+    <style name="item_view_pubdate" parent="@style/item_view_subtitle_text">
+        <item name="android:textColor">@color/font_color_night</item>
+    </style>
+    <style name="item_view_content">
+    	<item name="android:paddingTop">1dp</item>
+    	<item name="android:paddingLeft">16dp</item>
+    	<item name="android:paddingRight">16dp</item>
+    	<item name="android:textSize">16dp</item>
+        <item name="android:autoLink">web|email</item>
+        <item name="android:freezesText">false</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/font_color_night</item>
+    </style>
+     <style name="item_view_content_title">
+    	<item name="android:paddingTop">1dp</item>
+    	<item name="android:paddingLeft">16dp</item>
+    	<item name="android:paddingRight">16dp</item>
+    	<item name="android:textSize">16dp</item>
+        <item name="android:autoLink">web|email</item>
+        <item name="android:freezesText">false</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/text_color_footer</item>
+    </style>
+    <style name="item_view_content_title_3">
+    	<item name="android:paddingLeft">16dp</item>
+    	<item name="android:paddingRight">16dp</item>
+    	<item name="android:textSize">16dp</item>
+        <item name="android:autoLink">web|email</item>
+        <item name="android:freezesText">false</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/text_color_footer</item>
+    </style>
+     <style name="item_view_content_title_2">
+    	<item name="android:paddingTop">1dp</item>
+    	<item name="android:paddingLeft">20dp</item>
+    	<item name="android:paddingRight">20dp</item>
+    	<item name="android:textSize">18sp</item>
+        <item name="android:freezesText">false</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/bg_color_white</item>
+        <item name="android:background">@color/bg_color_black</item>
+    </style>
+    <style name="style_text_control">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">50dp</item>
+    	<item name="android:textSize">14dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color_white</item>
+        <item name="android:background">@color/bg_color_pantip</item>
+    </style>
+    <style name="style_text_control_small">
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">38dp</item>
+    	<item name="android:textSize">14dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/font_color_white</item>
+        <item name="android:background">@color/bg_color_pantip</item>
+    </style>
+    
+    <style name="button_text" >
+	    <item name="android:layout_width" >fill_parent</item>
+	    <item name="android:layout_height" >wrap_content</item>
+	    <item name="android:textColor">#6E7B8B</item>
+	    <item name="android:gravity" >center</item>
+	    <item name="android:layout_margin" >7dp</item>
+	    <item name="android:textSize" >13sp</item>
+	    <item name="android:textStyle" >bold</item>
+	    <item name="android:shadowColor" >#000000</item>
+	    <item name="android:shadowDx" >1</item>
+	    <item name="android:shadowDy" >1</item>
+	    <item name="android:shadowRadius" >2</item>
+     </style>
+      <style name="button_text_2" >
+	    <item name="android:layout_width" >fill_parent</item>
+	    <item name="android:layout_height" >wrap_content</item>
+	    <item name="android:textColor">#6E7B8B</item>
+	    <item name="android:gravity" >center</item>
+	    <item name="android:layout_margin" >1dp</item>
+	    <item name="android:textSize" >13sp</item>
+	    <item name="android:textStyle" >bold</item>
+	    <item name="android:shadowColor" >#000000</item>
+	    <item name="android:shadowDx" >1</item>
+	    <item name="android:shadowDy" >1</item>
+	    <item name="android:shadowRadius" >2</item>
+     </style>
+     <style name="button_text_control" >
+	   
+	    <item name="android:textColor">#000000</item>
+	    <item name="android:gravity" >center</item>
+	    <item name="android:layout_margin" >5dp</item>
+	    <item name="android:textSize" >16sp</item>
+	    <item name="android:textStyle" >bold</item>
+	    <item name="android:shadowColor" >#000000</item>
+	    <item name="android:shadowDx" >1</item>
+	    <item name="android:shadowDy" >1</item>
+	    <item name="android:shadowRadius" >2</item>
+     </style>
+    <style name="button_control_page" >
+	    <item name="android:layout_width" >fill_parent</item>
+	    <item name="android:layout_height" >wrap_content</item>
+	    <item name="android:textColor">#6E7B8B</item>
+	    <item name="android:layout_margin" >3dp</item>
+	    <item name="android:textSize" >12sp</item>
+	    <item name="android:textStyle" >bold</item>
+	    <item name="android:shadowColor" >#000000</item>
+	    <item name="android:shadowDx" >1</item>
+	    <item name="android:shadowDy" >1</item>
+	    <item name="android:shadowRadius" >2</item>
+     </style>
+     
+    <style name="style_display_title" parent="@style/item_common_title">
+    	<item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color_night</item>
+    </style>
+     <style name="style_display_content" parent="@style/item_common_title">
+    	<item name="android:textSize">20dp</item>
+    	<item name="android:paddingLeft">10dp</item>
+    	<item name="android:paddingRight">10dp</item>
+    	<item name="android:autoLink">web</item>
+        <item name="android:textColor">@color/font_color_night</item>
+    </style>
+     <style name="style_display_footer" parent="@style/item_common_title">
+    	<item name="android:textSize">16dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/font_color_night</item>
+    </style>
+</resources>

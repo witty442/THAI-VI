@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="right"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+          
+          <TextView 
+				android:id="@+id/title_id"
+				android:text="Topic"
+				android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+				style="@style/item_selected_title"/>
+		  <TextView
+			    android:id="@+id/title"
+			    style="@style/item_selected_title"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content" />
+		        
+        
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_color_mainstyle">
+           <TextView 
+	    		android:id="@+id/topicFooter"
+	    		android:text="TotalRead(10)"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            style="@style/item_selected_pubdate"
+	            android:textColor="@color/text_color_footer"/>
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/E:/AndroidDev/androidStudioWork/THAI-VI/app/src/main/res/layout/feed_main_item_row.xml -->

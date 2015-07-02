@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@color/color_green_1"
+    android:orientation="vertical" >
+    
+   
+	  <EditText
+        android:id="@+id/searchText"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:ems="60"
+        android:hint="Search" >
+       <requestFocus />
+       </EditText>
+
+	 <Button
+           android:id="@+id/popupSearchBtn"
+           android:text=" ค้นหา "
+           style="@style/button_text_control"
+           android:layout_width="fill_parent"
+           android:layout_height="45dp"
+           android:layout_gravity="left"
+           />
+</LinearLayout>

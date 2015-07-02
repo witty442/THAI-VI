@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color_mainstyle" >
+
+     <LinearLayout
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:layout_gravity="right|center"
+         >
+
+         <Button
+                android:id="@+id/controlPrevBtn"
+                style="@style/button_text"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right|center"
+                android:background="@drawable/b_prev"
+                android:layout_marginLeft="3dp"  />
+    </LinearLayout>
+    
+  <LinearLayout
+      android:id="@+id/gotopage_layout"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_gravity="center_horizontal"
+      android:layout_weight="0.21" >
+
+      <Button
+          android:id="@+id/controlCurrentBtn"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:layout_gravity="center|center_horizontal"
+          android:layout_marginRight="20dp"
+          android:layout_weight="0.54"
+          android:background="@color/bg_color_mainstyle"
+          android:text="Page"
+          android:textColor="@color/font_color_white"
+          android:textSize="16dp"
+          android:textStyle="bold" />
+  </LinearLayout>
+     
+    <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="60dp"
+       android:layout_gravity="right|center"
+      >
+          <Button
+                android:id="@+id/controlNextBtn"
+                style="@style/button_text"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right|center"
+                android:background="@drawable/b_next"
+                android:layout_marginLeft="20dp"  />
+     </LinearLayout>
+</LinearLayout><!-- From: file:/E:/AndroidDev/androidStudioWork/THAI-VI/app/src/main/res/layout/feed_main_item_listview_footer.xml -->

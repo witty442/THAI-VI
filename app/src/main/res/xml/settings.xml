@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">	
+	
+<PreferenceCategory android:title="Thaivi Member New" >
+	<Preference
+        android:title="Thaivi Member"
+        android:key="thaivi_member"
+        android:summary="ตั้งค่ารหัสการใช้งาน ,Login"/>
+</PreferenceCategory>
+
+ <PreferenceCategory android:title="Generale Setting" >
+    <ListPreference     
+        android:title="@string/pref_set_text_size"
+        android:summary=""
+        android:key="textSize"
+        android:defaultValue="20"
+        android:entries="@array/listArrayTextSize"
+        android:entryValues="@array/listArrayTextSize" />
+    <Preference
+         android:title="@string/pref_clear_cache"
+         android:summary=""
+         android:key="clearCache" />
+     <Preference
+         android:title="@string/pref_clear_all_data"
+         android:summary=""
+         android:key="clearDataAll" />
+     <Preference
+         android:title="@string/upgrade_topic"
+         android:summary=""
+         android:key="upgradeTopic" />
+     <Preference
+         android:title="@string/pref_show_about"
+         android:summary=""
+         android:key="showAbout" />
+  </PreferenceCategory>   
+</PreferenceScreen>

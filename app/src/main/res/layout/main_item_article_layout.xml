@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_color_mainstyle"
+    android:orientation="vertical" >
+   
+          <ListView
+              android:id="@+id/feed_article_list"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:cacheColorHint="#00000000"
+              android:choiceMode="singleChoice"
+              android:divider="@color/bg_color_white"
+              android:dividerHeight="1dp" 
+              android:background="@color/bg_color_mainstyle"/>
+
+          <TextView
+	        android:id="@id/android:empty"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:gravity="center"
+	        android:text="Loading data.."/>
+
+   </LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res/com.vi"
+	android:orientation="vertical" 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	
+	<LinearLayout android:layout_width="fill_parent"
+		android:gravity="center_horizontal" android:id="@+id/header_layout"
+		android:orientation="vertical" android:layout_height="wrap_content">
+		<com.vi.ExtTitleFlowIndicator
+			android:id="@+id/viewflowindic" 
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:background="@color/bg_color_mainstyle"
+			app:footerLineHeight="1dp"
+			app:footerTriangleHeight="10dp" 
+			app:textColor="@color/bg_color_white" 
+			app:selectedColor="#FFFFC445" 
+			app:footerColor="@color/font_color_white" 
+			app:titlePadding="4dp" 
+			app:textSize="18dp" 
+			app:selectedSize="18dp" 
+			android:layout_marginTop="1dip" 
+			app:clipPadding="4dp">
+	   </com.vi.ExtTitleFlowIndicator>
+
+	</LinearLayout>
+	
+	<com.vi.ExtViewFlow
+		android:duplicateParentState="true" android:id="@+id/viewflow"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+	</com.vi.ExtViewFlow>
+	
+</LinearLayout> 
+<!-- From: file:/E:/AndroidDev/androidStudioWork/THAI-VI/app/src/main/res/layout/swipe_main_layout.xml -->

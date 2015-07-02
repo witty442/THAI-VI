@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="main_color">#416D54</color><!-- Green -->
+	<color name="second_color">#FFFFFF</color><!-- White -->
+	<color name="third_color">#4C6E9C</color><!-- Blue -->
+	<color name="four_color">#375E90</color><!-- PantipStyle -->
+	
+	<color name="color1">#666666</color>
+	<color name="color2">#000000</color>
+	<color name="red">#FF0000</color>
+	<color name="text_color_footer">#FFCD38</color>
+	<color name="loading_color">@color/color1</color>
+	
+	<color name="color_green_1">#D7EFA4</color>
+	
+	 <!-- Text color in ListView Item -->
+	<color name="item_notselected_text">@color/bg_color_white</color>
+	<color name="item_selected_text">@color/bg_color_white</color>
+	<color name="bg_color_divider">#BDBDBD</color><!-- White -->
+	
+	<!--  Text View for change background color-->
+	<color name="bg_color_main">#3B5998</color><!-- เข้ม -->
+    <color name="bg_color_black">#000000</color><!-- Black -->
+	<color name="bg_color_white">#FFFFFF</color><!-- White -->
+	<color name="bg_color_yellow">#FFFFBE</color><!-- Yellow  -->
+	
+    <color name="font_color_white">#FFFFFF</color><!-- White -->
+    <color name="font_color_black">#000000</color><!-- Black -->
+	
+	<!--  Text View for change background color-->
+    <color name="bg_color_night">#000000</color><!-- Black -->
+    <color name="font_color_night">#FFFFFF</color><!-- White -->
+
+    <color name="bg_color_day">#FFFFFF</color><!-- White -->
+	<color name="font_color_day">#000000</color><!-- Black -->
+	
+    <color name="bg_color_pantip">#375E90</color><!-- Pantip blue -->
+    <color name="font_color_pantip">#FFFFFF</color><!-- White -->
+    
+    <color name="bg_color_blognone">#4C6E9C</color><!-- Blognone blue -->
+    <color name="font_color_blognone">#FFFFFF</color><!-- White -->
+    
+    <color name="bg_color_thaivi">#416D54</color><!-- Thaivi green -->
+    <color name="font_color_thaivi">#FFFFFF</color><!-- White -->
+
+    <!-- Color Button -->
+   <color name="bg_color_iveryblack">#75675E</color><!-- snow3 -->
+   
+   <!-- Main Style -->
+	<color name="bg_color_mainstyle">#416D54</color><!-- MainStyle Green-->
+	
+	<color name="bg_listview_selected">#9ACD32</color><!-- Green soft -->
+   
+   <drawable name="focused">#ff5500</drawable>
+   <drawable name="selected">#FF00FF</drawable>
+   
+</resources>

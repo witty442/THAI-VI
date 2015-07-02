@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:gravity="center_horizontal"
+    android:padding="3dp"
+    android:layout_height="fill_parent">	
+	
+    <Button
+          android:id="@+id/controlMorePageBtn"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:layout_gravity="center|center_horizontal"
+          android:layout_weight="0.54"
+          android:background="@color/bg_color_mainstyle"
+          android:text="Load Next Page"
+          android:textColor="@color/font_color_white"
+          android:textSize="16dp"
+          android:textStyle="bold" />
+
+</LinearLayout><!-- From: file:/E:/AndroidDev/androidStudioWork/THAI-VI/app/src/main/res/layout/feed_item_list_footer.xml -->

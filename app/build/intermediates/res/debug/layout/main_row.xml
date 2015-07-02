@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="match_parent" 
+				android:layout_height="match_parent" 
+				android:orientation="vertical">
+    <TableLayout 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:id="@+id/layout_main">
+	
+         <TableRow 
+             android:layout_width="fill_parent"
+             android:layout_height="30dp">
+		       <TextView 
+				android:id="@+id/title_id"
+				android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+				style="@style/item_selected_title"/>
+		        <TextView
+			    android:id="@+id/title"
+			    android:text="title"
+			    style="@style/item_selected_title"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content" />
+		     </TableRow>
+		        
+		  <TableRow 
+             android:layout_width="fill_parent"
+             android:layout_height="30dp">
+		        
+		       <TextView
+			    android:id="@+id/main_total"
+			    style="@style/item_selected_title"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:textColor="@color/text_color_footer" />
+		       
+		       <TextView 
+	    		android:id="@+id/topicType"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            style="@style/item_selected_pubdate"/>
+		       
+		        <TextView 
+	    		android:id="@+id/topten"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            style="@style/item_selected_pubdate"/>
+		       
+		  
+		      </TableRow>
+		      
+		      
+	   </TableLayout>
+</LinearLayout><!-- From: file:/E:/AndroidDev/androidStudioWork/THAI-VI/app/src/main/res/layout/main_row.xml -->

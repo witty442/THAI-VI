@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout 
+    android:id="@+id/popup_list_control_id"
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:background="@color/font_color_white"
+	>
+
+    
+	<TableRow android:id="@+id/tableRowHomeId" android:layout_margin="1dp" 
+	    android:background="@color/color_green_1">
+		 <Button
+           android:id="@+id/controlHomeBtn_Temp"
+           style="@style/button_text_control"
+           android:layout_width="32dp"
+           android:layout_height="32dp"
+           android:layout_gravity="center_vertical"
+           android:background="@drawable/b_home" />
+		 <Button
+           android:id="@+id/controlHomeBtn"
+           android:text="หน้าหลัก"
+           style="@style/button_text_control"
+           android:layout_width="fill_parent"
+           android:layout_height="36dp"
+           android:layout_gravity="left"
+           android:background="@android:color/transparent"
+           />
+     </TableRow>
+     <TableRow android:id="@+id/tableRowAnnounceId" android:layout_margin="1dp" 
+	    android:background="@color/color_green_1">
+		 <Button
+           android:id="@+id/controlAnnounceBtn_Temp"
+           style="@style/button_text_control"
+           android:layout_width="32dp"
+           android:layout_height="32dp"
+           android:layout_gravity="center_vertical"
+           android:background="@drawable/b_announce" />
+		 <Button
+           android:id="@+id/controlAnnounceBtn"
+           android:text="แสดงกระทู้ประกาศ"
+           style="@style/button_text_control"
+           android:layout_width="fill_parent"
+           android:layout_height="36dp"
+           android:layout_gravity="left"
+           android:background="@android:color/transparent"
+           />
+     </TableRow>
+     
+	<TableRow android:id="@+id/tableRowSearchId"
+	    android:layout_margin="1dp" android:background="@color/color_green_1">
+		 <Button
+           android:id="@+id/controlSearchBtn_Temp"
+           style="@style/button_text_control"
+           android:layout_width="32dp"
+           android:layout_height="32dp"
+           android:layout_gravity="center_vertical"
+           android:background="@drawable/b_search" />
+		 <Button
+           android:id="@+id/controlSearchBtn"
+           android:text="ค้นหา"
+           style="@style/button_text_control"
+           android:layout_width="fill_parent"
+           android:layout_height="36dp"
+           android:layout_gravity="left"
+           android:background="@android:color/transparent"
+           />
+     </TableRow>
+   
+    <TableRow android:id="@+id/tableRowDelId" android:layout_margin="1dp" android:background="@color/color_green_1">
+           <Button
+                android:id="@+id/controlDelBtn_Temp"
+                style="@style/button_text_control"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/b_del" />
+            <Button
+                android:id="@+id/controlDelBtn"
+                android:text="ลบข้อมูล"
+                style="@style/button_text_control"
+                android:layout_width="fill_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="left"
+                android:background="@android:color/transparent" />
+    </TableRow>
+   
+    <TableRow android:id="@+id/tableRowSaveId" android:layout_margin="1dp" android:background="@color/color_green_1">
+            <Button
+                android:id="@+id/controlSaveBtn_Temp"
+                style="@style/button_text_control"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/b_save" />
+             <Button
+                android:id="@+id/controlSaveBtn"
+                android:text="บันทึกข้อมูล"
+                style="@style/button_text_control"
+                android:layout_width="fill_parent"
+                android:layout_height="36dp"
+                 android:layout_gravity="left"
+                android:background="@android:color/transparent" />
+    </TableRow>
+  
+    <TableRow android:id="@+id/tableRowBookmarkId" android:layout_margin="1dp" android:background="@color/color_green_1">      
+             <Button
+                android:id="@+id/controlBookmarkBtn_Temp"
+                style="@style/button_text_control"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/b_bookmark" />
+             <Button
+                android:id="@+id/controlBookmarkBtn"
+                android:text="บันทึกบุ็คมาร์ค"
+                style="@style/button_text_control"
+                android:layout_width="fill_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="left"
+                android:background="@android:color/transparent"  />
+       </TableRow>
+
+   <TableRow android:id="@+id/tableRowRefreshId" android:layout_margin="1dp" android:background="@color/color_green_1">
+            <Button
+                android:id="@+id/controlRefreshBtn_Temp"
+                style="@style/button_text_control"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/b_refresh" />
+            <Button
+                android:id="@+id/controlRefreshBtn"
+                android:text="Refresh"
+                style="@style/button_text_control"
+                android:layout_width="fill_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="left"
+                android:background="@android:color/transparent" />
+            
+    </TableRow>
+    <TableRow android:id="@+id/tableRowTopId" android:layout_margin="1dp" android:background="@color/color_green_1">
+        <Button
+                android:id="@+id/controlTopBtn_Temp"
+                style="@style/button_text_2"
+                android:layout_width="36dp"
+                android:layout_height="32dp"
+                android:layout_gravity="right|center"
+                android:background="@drawable/b_top"
+                 />
+         <Button
+                android:id="@+id/controlTopBtn"
+                android:text="ไปบนสุด"
+                style="@style/button_text_control"
+                android:layout_width="fill_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="left"
+                android:background="@android:color/transparent" />
+    </TableRow>
+    
+     <TableRow android:id="@+id/tableRowBottomId" android:layout_margin="1dp" android:background="@color/color_green_1">
+           <Button
+                android:id="@+id/controlBottomBtn_Temp"
+                style="@style/button_text_2"
+                android:layout_width="36dp"
+                android:layout_height="32dp"
+                android:layout_gravity="right|center"
+                android:background="@drawable/b_bottom" />
+           <Button
+                android:id="@+id/controlBottomBtn"
+                android:text="ไปล่างสุด"
+                style="@style/button_text_control"
+                android:layout_width="120dp"
+                android:layout_height="36dp"
+                android:layout_gravity="left"
+                android:background="@android:color/transparent" />
+    </TableRow>
+    
+</TableLayout><!-- From: file:/E:/AndroidDev/androidStudioWork/THAI-VI/app/src/main/res/layout/popup_control.xml -->
