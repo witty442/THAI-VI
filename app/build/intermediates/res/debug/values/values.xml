@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/E:/AndroidDev/androidStudioWork/THAI-VI/app/src/main/res/values/arrays.xml -->
+    <!-- From: file:/D:/AndroidDev/AndroidStudioWork/THAI-VI/app/src/main/res/values/arrays.xml -->
     <eat-comment/>
     <string-array name="listArrayTextSize">
 	    <item>16</item>
@@ -15,7 +15,7 @@
 		<item>25</item>
 		<item>26</item>
 	</string-array>
-    <!-- From: file:/E:/AndroidDev/androidStudioWork/THAI-VI/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/D:/AndroidDev/AndroidStudioWork/THAI-VI/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="bg_color_black">#000000</color>
     <color name="bg_color_blognone">#4C6E9C</color>
@@ -54,7 +54,7 @@
     <declare-styleable name="ViewFlow"><attr format="integer" name="sidebuffer"/></declare-styleable>
     <drawable name="focused">#ff5500</drawable>
     <drawable name="selected">#FF00FF</drawable>
-    <!-- From: file:/E:/AndroidDev/androidStudioWork/THAI-VI/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/D:/AndroidDev/AndroidStudioWork/THAI-VI/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="Hide">Hide</string>
     <string name="app_name">THAI-VI</string>
@@ -109,7 +109,7 @@
          Twitter: witty442 \n
     </string>
     <string name="yes">Yes</string>
-    <!-- From: file:/E:/AndroidDev/androidStudioWork/THAI-VI/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/D:/AndroidDev/AndroidStudioWork/THAI-VI/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="CustomTitleHideTheme" parent="android:Theme"> 
         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>  

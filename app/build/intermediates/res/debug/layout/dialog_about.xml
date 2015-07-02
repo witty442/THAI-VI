@@ -34,4 +34,4 @@
               android:textColorLink="@color/main_color"
               android:autoLink="web"
               android:text="@string/powered"/>
-</LinearLayout><!-- From: file:/E:/AndroidDev/androidStudioWork/THAI-VI/app/src/main/res/layout/dialog_about.xml -->
+</LinearLayout><!-- From: file:/D:/AndroidDev/AndroidStudioWork/THAI-VI/app/src/main/res/layout/dialog_about.xml -->
