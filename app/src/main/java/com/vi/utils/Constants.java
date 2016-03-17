@@ -6,13 +6,15 @@ public class Constants {
   //public static final String PATH_HTTP_DROPBOX = "http://dl.dropboxusercontent.com/u/24337336/VIBIBLE";
   public static final String URL_CATALOGS = "https://dl.dropboxusercontent.com/u/24337336/VIBIBLE/catalogs/catalogs.txt";
   public static final String URL_APP_CONFIG = "https://dl.dropboxusercontent.com/u/24337336/VIBIBLE/thai-vi-config.txt";
-                                               
+  public static final String URL_SCRIPT_UPDATE = "https://dl.dropboxusercontent.com/u/24337336/VIBIBLE/catalogs/script_update_sql.txt";
+
   public static final String FEED_TYPE_ARTICLE = "ARTICLE";
   public static final String FEED_TYPE_BORAD = "BOARD";
   public static final String FEED_TYPE_BORAD_100 = "BOARD_100";
   public static final String FEED_TYPE_BORAD_100_NEW = "BOARD_100_NEW";
   public static final String FEED_TYPE_VIDEO = "VIDEO";
-  
+  public static final String FEED_TYPE_MEDIA = "MEDIA";
+
   public static final String ITEM_TYPE_TEXT = "TEXT";
   public static final String ITEM_TYPE_TEXT_LINK = "TEXT_LINK";
   public static final String ITEM_TYPE_VIDEO = "VIDEO";

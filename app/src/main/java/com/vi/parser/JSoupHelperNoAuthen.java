@@ -53,11 +53,11 @@ public class JSoupHelperNoAuthen {
             URL url = new URL(Constants.URL_APP_CONFIG);
             Document doc = null;
             try{
-                doc = Jsoup.parse(url,Constants.JSOUP_TIMEOUT_SHORT);
+                doc = Jsoup.parse(url, Constants.JSOUP_TIMEOUT_SHORT);
             }catch(Exception e){
                 e.printStackTrace();
                 log.debug("Retry conn");
-                doc = Jsoup.parse(url,Constants.JSOUP_TIMEOUT_SHORT);
+                doc = Jsoup.parse(url, Constants.JSOUP_TIMEOUT_SHORT);
             }
 
             String node = doc.body().text();
@@ -92,6 +92,28 @@ public class JSoupHelperNoAuthen {
         return appConfigMap;
     }
 
+   public String getScriptFromDropbox(){
+       String scriptSql = "";
+       List<Feed> listItem = new ArrayList<Feed>();
+       try{
+           log.debug("Script Update url:"+Constants.URL_SCRIPT_UPDATE);
+           URL url = new URL(Constants.URL_SCRIPT_UPDATE);
+           Document doc = null;
+           try{
+               doc = Jsoup.parse(url, Constants.JSOUP_TIMEOUT_SHORT);
+               scriptSql = doc.body().text().toString();
+           }catch(Exception e){
+               log.debug(e.getMessage());
+               log.debug("Retry conn");
+
+               doc = Jsoup.parse(url, Constants.JSOUP_TIMEOUT_SHORT);
+               scriptSql = doc.body().text().toString();
+           }
+       }catch(Exception e){
+           log.debug(e.getMessage());
+       }
+      return scriptSql;
+   }
 
     /**
      *
@@ -111,7 +133,7 @@ public class JSoupHelperNoAuthen {
 
                 node = doc.body().text();
                 //log.debug("NodeText["+node+"]");
-                allStrs = node.toString().split("\\"+Constants.DELIMETER_NEW_LINE);
+                allStrs = node.toString().split("\\" + Constants.DELIMETER_NEW_LINE);
                 //log.debug("allStrsLength["+allStrs.length+"]");
 
             }catch(Exception e){
@@ -121,7 +143,7 @@ public class JSoupHelperNoAuthen {
 
                 node = doc.body().text();
                 //log.debug("NodeText["+node+"]");
-                allStrs = node.toString().split("\\"+Constants.DELIMETER_NEW_LINE);
+                allStrs = node.toString().split("\\" + Constants.DELIMETER_NEW_LINE);
                 //log.debug("allStrsLength["+allStrs.length+"]");
             }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res/com.vi"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:orientation="vertical" 
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
@@ -15,9 +15,9 @@
 			android:layout_width="fill_parent"
 			app:footerLineHeight="1dp"
 			app:footerTriangleHeight="10dp" 
-			app:textColor="@color/bg_color_white" 
+			app:textColor="@color/font_color_yellow_1"
 			app:selectedColor="#FFFFC445" 
-			app:footerColor="@color/font_color_white" 
+			app:footerColor="@color/font_color_yellow_1"
 			app:titlePadding="4dp" 
 			app:textSize="18dp" 
 			app:selectedSize="18dp" 

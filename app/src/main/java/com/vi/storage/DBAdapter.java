@@ -583,7 +583,8 @@ public class DBAdapter {
 				 sql +=" \n and f.feed_id ="+id+""; 
 			 }
 			sql +="\n order by f.update_date desc ";
-			
+
+			log.debug("sql:\n"+sql);
 		    cursor = mDb.rawQuery(sql, null);
 		    	
 			/*if(id ==0){
@@ -979,6 +980,71 @@ public class DBAdapter {
     	
 		return item;
 	}
+	public Item getItemDBByTitle(long feedId,String title) {
+		Item item = null;
+		Cursor cursor = null;
+		try {
+			//cursor = mDb.query(DBSchema.ItemSchema.TABLE_NAME, null, DBSchema.ItemSchema.COLUMN_TITLE + "=?", new String[]{title}, null, null, null);
+			cursor = mDb.rawQuery("select * from items where feed_id =? and title = ?", new String[]{Long.valueOf(feedId).toString(),title});
+			if (cursor.moveToFirst()) {
+				item = new Item();
+				while (!cursor.isAfterLast()) {
+					item.setFeedId(cursor.getLong(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_FEED_ID)));
+					item.setId(cursor.getLong(cursor.getColumnIndex(DBSchema.ItemSchema._ID)));
+					item.setLink(cursor.getString(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_LINK)));
+					item.setOrgLink(cursor.getString(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_ORG_LINK)));
+					item.setTitle(cursor.getString(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_TITLE)));
+					if (!cursor.isNull(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_DESCRIPTION)))
+						item.setDescription(cursor.getString(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_DESCRIPTION)));
+					if (!cursor.isNull(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_CONTENT)))
+						item.setContent(cursor.getString(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_CONTENT)));
+					if (!cursor.isNull(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_IMAGE)))
+						item.setImage(new URL(cursor.getString(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_IMAGE))));
+
+					if (!cursor.isNull(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_CREATE_DATE))){
+						item.setCreateDate(new Date(cursor.getLong(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_CREATE_DATE))));
+					}
+
+					if (!cursor.isNull(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_UPDATE_DATE))){
+						item.setUpdateDate(new Date(cursor.getLong(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_UPDATE_DATE))));
+					}
+
+					item.setPathFile(cursor.getString(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_PATH_FILE)));
+
+					//log.debug("Item fav int:"+cursor.getInt(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_FAV)));
+
+					item.setFav(cursor.getInt(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_FAV))==0?false:true);
+
+					item.setRead(cursor.getInt(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_READ))==0?false:true);
+					item.setCountOpen(cursor.getInt(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_COUNT_OPEN)));
+
+					item.setAuthor(cursor.getString(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_AUTHOR)));
+					item.setType(cursor.getString(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_TYPE)));
+
+					item.setTotalReply(cursor.getInt(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_TOTAL_REPLY)));
+					item.setTotalRead(cursor.getInt(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_TOTAL_READ)));
+					item.setCurPage(cursor.getInt(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_CUR_PAGE)));
+					item.setTopicCurPage(cursor.getInt(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_TOPIC_CUR_PAGE)));
+					item.setLastPosition(cursor.getString(cursor.getColumnIndex(DBSchema.ItemSchema.COLUMN_LAST_POSITION)));
+
+					cursor.moveToNext();
+				}
+			} else {
+				throw new FeedException("Item with feed_id " + feedId+ " not found in the database.");
+			}
+		} catch (FeedException fe) {
+			Log.e(LOG_TAG,"",fe);
+			errorId = errorId + 1;
+		} catch (MalformedURLException mue) {
+			Log.e(LOG_TAG,"",mue);
+			errorId = errorId + 1;
+		}
+
+		if (cursor != null)
+			cursor.close();
+
+		return item;
+	}
     
     public boolean isItemExistDB(String title) {
 		Cursor cursor = null;
@@ -1156,7 +1222,33 @@ public class DBAdapter {
     	   feed = getFeed(feedId,false,feedType);
     	return getItemsDB( maxItems, flagType, dateSort, feed,feedType,null,topicCurPage);   
     }
-    
+
+	public List<Item> getItemsDBByTitle(int feedId,String title){
+		List<Item> items = new ArrayList<Item>();
+		String sql = "";
+		Cursor cursor = null;
+		try{
+			sql = "select i.*  from items i where i.feed_id= "+feedId+" and i.title like '%"+title+"%' order by i.title asc ";
+			log.debug("sql:"+sql);
+
+			cursor = mDb.rawQuery(sql,null);
+			cursor.moveToFirst();
+			while (!cursor.isAfterLast() ) {
+				Item item = getItem(cursor.getLong(cursor.getColumnIndex(DBSchema.ItemSchema._ID)));
+
+				items.add(item);
+				cursor.moveToNext();
+
+			}
+
+			if (cursor != null)
+				cursor.close();
+		}catch(Exception e){
+			log.debug(e.getMessage());
+		}
+        return items;
+    }
+
     public List<Item> getItemsDB(
     		int maxItems,String flagType,
             String dateSort ,Feed feed,
@@ -1476,7 +1568,17 @@ public class DBAdapter {
     	}
     	return false;
     }
-    
+
+	public void updateByScriptSql(String scriptSql) {
+		try{
+			//mDb.update(DBSchema.ItemSchema.TABLE_NAME, null, , null);
+			mDb.execSQL(scriptSql);
+
+		}catch(Exception e){
+			log.debug(e.getMessage());
+		}
+	}
+
     //Update By item_title
     public boolean updateItemByTitleAndFeedId(long feedId,Item item) {
     	return updateItemByTitle(feedId,item.getTitle(), getContentValuesUpdateTopicCurPage(feedId, item));

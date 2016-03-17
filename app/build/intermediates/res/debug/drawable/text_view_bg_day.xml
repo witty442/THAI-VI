@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
-     <solid android:color="@color/bg_color_day" />
-   <stroke android:width="0.5dip" android:color="#BFEFFF"/>
-</shape><!-- From: file:/D:/AndroidDev/AndroidStudioWork/THAI-VI/app/src/main/res/drawable/text_view_bg_day.xml -->

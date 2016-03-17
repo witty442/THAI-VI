@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/delBookmarkAction"
-          android:icon="@drawable/b_del"
-          android:title="ลบข้อมูล Bookmark" />
-</menu><!-- From: file:/D:/AndroidDev/AndroidStudioWork/THAI-VI/app/src/main/res/menu/menu_delbookmark.xml -->

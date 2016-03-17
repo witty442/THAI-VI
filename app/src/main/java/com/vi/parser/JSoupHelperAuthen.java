@@ -451,10 +451,6 @@ public class JSoupHelperAuthen implements Serializable{
         }
     }
 
-
-
-
-
     private String getThaiviTopicId(String link){
         String id = "";
         /** substr link for get id= topic for save image **/

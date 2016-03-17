@@ -5,11 +5,19 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"  >
 
+	<TextView
+		android:id="@+id/loginMsgText"
+		android:layout_width="wrap_content"
+		android:layout_height="30dp"
+		android:layout_alignParentLeft="true"
+		 />
+
        <TextView
 		  android:id="@+id/usernameText"
 		  android:layout_width="wrap_content"
 		  android:layout_height="30dp"
 		  android:layout_alignParentLeft="true"
+		   android:layout_below="@id/loginMsgText"
 		  android:text="Username(รหัสผู้ใช้งาน)" />
        
 	   <EditText

@@ -1,37 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Material">
-       <item name="android:windowActionBar">false</item>
-       <item name="android:windowNoTitle">false</item>
-        
-        <!-- <item name="android:colorPrimary">@color/primary</item>
-        <item name="android:colorPrimaryDark">@color/primary_dark</item>
-        <item name="android:colorAccent">@color/accent</item>
-        <item name="android:textColorPrimary">@color/text</item> -->
-    </style>
-    
     <!-- Custom Title -->
-    <style name="CustomTitleHideTheme" parent="@style/AppTheme"> 
-         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>  
+    <style name="CustomTitleHideTheme" parent="android:Theme"> 
+        <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>  
         <item name="android:windowTitleSize">0dip</item> 
     </style> 
     
-    <style name="CustomTitleTheme" parent="@style/AppTheme"> 
+    <style name="CustomTitleTheme" parent="android:Theme"> 
         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>  
-        <item name="android:windowTitleSize">50dip</item>
+        <item name="android:windowTitleSize">50dip</item> 
     </style> 
     
-    <style name="CustomTitleSmallTheme" parent="@style/AppTheme"> 
+    <style name="CustomTitleSmallTheme" parent="android:Theme"> 
         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>  
-        <item name="android:windowTitleSize">50dip</item>
+        <item name="android:windowTitleSize">50dip</item> 
     </style> 
     
     <style name="WindowTitleBackground">     
         <item name="android:background">@color/bg_color_mainstyle</item>                   
     </style>
     
-    <style name="CustomTitleWithControlTheme" parent="@style/AppTheme"> 
-         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>  
+    <style name="CustomTitleWithControlTheme" parent="android:Theme"> 
+        <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>  
         <item name="android:windowTitleSize">50dip</item> 
     </style> 
     <!-- Custom Title -->
@@ -52,7 +42,7 @@
         <item name="android:paddingRight">15dp</item>
     </style>
     
-	<style name="item_notselected_title" parent="@style/item_common_title">
+	<style name="item_notselected_title1" parent="@style/item_common_title">
         <item name="android:textColor">@color/item_notselected_text</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -60,9 +50,7 @@
         <item name="android:textColor">@color/item_selected_text</item>
     </style>
     
-    <style name="item_notselected_favorite_title" parent="@style/item_notselected_title">
-        <item name="android:paddingBottom">0dp</item>
-    </style>
+
     <style name="item_selected_favorite_title" parent="@style/item_selected_title">
         <item name="android:paddingBottom">0dp</item>
     </style>
@@ -212,7 +200,7 @@
     	<item name="android:paddingLeft">10dp</item>
     	<item name="android:paddingRight">10dp</item>
     	<item name="android:autoLink">web</item>
-        <item name="android:textColor">@color/font_color_night</item>
+        <item name="android:textColor">@color/font_color_yellow_1</item>
     </style>
      <style name="style_display_footer" parent="@style/item_common_title">
     	<item name="android:textSize">16dp</item>

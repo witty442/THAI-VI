@@ -18,7 +18,7 @@ public final class DBSchema {
 		public static final String COLUMN_ID = "feed_id";
 		public static final String COLUMN_URL = "url";
 		public static final String COLUMN_TITLE = "title";
-		public static final String COLUMN_TYPE = "type"; //article ,board
+		public static final String COLUMN_TYPE = "type"; //article ,board,media,stock_100,stock_100_new
 		public static final String COLUMN_CREATE_DATE = "create_date";
 		public static final String COLUMN_UPDATE_DATE = "update_date";
 		public static final String COLUMN_ENABLE = "enable";

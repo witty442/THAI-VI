@@ -14,9 +14,9 @@
 	<color name="color_green_1">#D7EFA4</color>
 	
 	 <!-- Text color in ListView Item -->
-	<color name="item_notselected_text">@color/bg_color_white</color>
-	<color name="item_selected_text">@color/bg_color_white</color>
-	<color name="bg_color_divider">#BDBDBD</color><!-- White -->
+	<color name="item_notselected_text">@color/font_color_yellow_1</color>
+	<color name="item_selected_text">@color/font_color_yellow_1</color>
+	<color name="bg_color_divider">#FFFFFF</color><!-- White -->
 	
 	<!--  Text View for change background color-->
 	<color name="bg_color_main">#3B5998</color><!-- เข้ม -->
@@ -26,6 +26,7 @@
 	
     <color name="font_color_white">#FFFFFF</color><!-- White -->
     <color name="font_color_black">#000000</color><!-- Black -->
+	<color name="font_color_yellow_1">#DEDEB8</color><!-- Yellow_1 -->
 	
 	<!--  Text View for change background color-->
     <color name="bg_color_night">#000000</color><!-- Black -->
@@ -49,7 +50,7 @@
    <!-- Main Style -->
 	<color name="bg_color_mainstyle">#416D54</color><!-- MainStyle Green-->
 	
-	<color name="bg_listview_selected">#9ACD32</color><!-- Green soft -->
+	<color name="bg_listview_selected">#f2ffcc</color><!-- Green soft -->
    
    <drawable name="focused">#ff5500</drawable>
    <drawable name="selected">#FF00FF</drawable>

@@ -305,19 +305,23 @@ public class FeedItemActivity extends Activity implements OnItemClickListener,On
 
         LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         View layout = layoutInflater.inflate(R.layout.popup_control, null);
-        popControlWindow = new PopupWindow(layout,LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 
+        int popControlWindowWidth =getWindowManager().getDefaultDisplay().getWidth()-100;
+        int popControlWindowHeight = LayoutParams.WRAP_CONTENT;
+
+        popControlWindow = new PopupWindow(layout,popControlWindowWidth,popControlWindowHeight);
         popControlWindow.setBackgroundDrawable(new BitmapDrawable());
         popControlWindow.setOutsideTouchable(true);
         popControlWindow.setFocusable(true);
         popControlWindow.setTouchable(true);
 
-        int y = 150;
-        int x = getWindowManager().getDefaultDisplay().getWidth()-150;
-        //log.debug("x["+x+"]y["+y+"]");
-        popControlWindow.showAtLocation(layout, Gravity.TOP, x, y);
+        int y = getWindowManager().getDefaultDisplay().getHeight()/5;
+        int x = 50;//getWindowManager().getDefaultDisplay().getWidth()-150;
 
-        TableRow tableRowSearchId = (TableRow)layout.findViewById(R.id.tableRowSearchId);
+        log.debug("x["+x+"]y["+y+"]");
+        popControlWindow.showAtLocation(layout, Gravity.NO_GRAVITY, x, y);
+
+
         TableRow tableRowSaveId = (TableRow)layout.findViewById(R.id.tableRowSaveId);
         TableRow tableRowBookmarkId = (TableRow)layout.findViewById(R.id.tableRowBookmarkId);
         TableRow tableRowDelId = (TableRow)layout.findViewById(R.id.tableRowDelId);
@@ -325,30 +329,23 @@ public class FeedItemActivity extends Activity implements OnItemClickListener,On
         TableRow tableRowHomeId = (TableRow)layout.findViewById(R.id.tableRowHomeId);
         TableRow tableRowTopId = (TableRow)layout.findViewById(R.id.tableRowTopId);
         TableRow tableRowBottomId = (TableRow)layout.findViewById(R.id.tableRowBottomId);
-        TableRow tableRowAnnounceId = (TableRow)layout.findViewById(R.id.tableRowAnnounceId);
 
-        //Hide
-        tableRowSearchId.setVisibility(View.GONE);
-        tableRowRefreshId.setVisibility(View.GONE);
-        tableRowAnnounceId.setVisibility(View.GONE);
+        //Show
+        tableRowSaveId.setVisibility(View.VISIBLE);
+        tableRowBookmarkId.setVisibility(View.VISIBLE);
+        tableRowDelId.setVisibility(View.VISIBLE);
+        tableRowRefreshId.setVisibility(View.VISIBLE);
+        tableRowHomeId.setVisibility(View.VISIBLE);
+        tableRowTopId.setVisibility(View.VISIBLE);
+        tableRowBottomId.setVisibility(View.VISIBLE);
 
-        //Button searchButton = (Button)layout.findViewById(R.id.controlSearchBtn);
-        //Button searchButtonImg = (Button)layout.findViewById(R.id.controlSearchBtn_Temp);
         Button saveButton = (Button)layout.findViewById(R.id.controlSaveBtn);
-        // Button saveButtonImg = (Button)layout.findViewById(R.id.controlSaveBtn_Temp);
         Button bookmarkButton = (Button)layout.findViewById(R.id.controlBookmarkBtn);
-        // Button bookmarkButtonImg = (Button)layout.findViewById(R.id.controlBookmarkBtn_Temp);
         Button delButton = (Button)layout.findViewById(R.id.controlDelBtn);
-        //Button delButtonImg = (Button)layout.findViewById(R.id.controlDelBtn_Temp);
         Button refreshButton = (Button)layout.findViewById(R.id.controlRefreshBtn);
-        // Button refreshButtonImg = (Button)layout.findViewById(R.id.controlRefreshBtn_Temp);
         Button homeButton = (Button)layout.findViewById(R.id.controlHomeBtn);
-        // Button homeButtonImg = (Button)layout.findViewById(R.id.controlHomeBtn_Temp);
-
         Button controlTopBtn = (Button)layout.findViewById(R.id.controlTopBtn);
-        // Button controlTopBtnImg = (Button)layout.findViewById(R.id.controlTopBtn_Temp);
         Button controlBottomBtn = (Button)layout.findViewById(R.id.controlBottomBtn);
-        //Button controlBottomBtnImg = (Button)layout.findViewById(R.id.controlBottomBtn_Temp);
 
         //Hide Del Button
         if( !Utils.isNull(currentItem.getPathFile()).equals("") || currentItem.isFav()){
@@ -611,11 +608,32 @@ public class FeedItemActivity extends Activity implements OnItemClickListener,On
                                 log.debug("1.totalReply:"+currentItem.getTotalReply());
                                 //load content
 
+                                /** Check Topic is Save db **/
+
+                                //default to id 22 (member general -order by letter)
+                                if(currentItem.getFeedId() == 22){
+                                    //update 14(order by stock) =21(old) both
+                                   Item Item14=  mDbFeedAdapter.getItemDBByTitle(20,currentItem.getTitle());
+                                    System.out.println("Item14:"+Item14);
+                                    if(Item14 != null) {
+                                        System.out.println("Title:"+Item14.getTitle());
+                                        //set property to display
+                                        currentItem.setTopicCurPage(Item14.getTopicCurPage());
+                                        currentItem.setLastPosition(Item14.getLastPosition());
+                                        currentPage = Item14.getCurPage();
+
+                                        String[] lastPositionStr = Utils.isNull(currentItem.getLastPosition()).split(",");
+                                        item_listViewIndex = Utils.isNullInt(lastPositionStr[0]);
+                                        item_listViewTop = Utils.isNullInt(lastPositionStr[1]);
+                                    }
+                                }
+
+                                /** Get Data From Web **/
                                 st = new Date();
                                 contentArrayAdapterList = jsoupAuthen.getContentFromWeb(userName,password,currentItem,currentPage);
                                 log.debug("** Time loadContent.jsoupAuthen.getContentFromWeb:"+((new Date().getTime())-st.getTime()));
 
-                                log.debug("2.totalReply:"+currentItem.getTotalReply());
+                                //log.debug("2.totalReply:"+currentItem.getTotalReply());
 
                                 //Update Item
                                 ContentValues values = new ContentValues();

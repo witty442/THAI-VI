@@ -33,6 +33,7 @@ public class ThaviMemberPrefActivity extends Activity implements OnClickListener
     private Button backBtn;
     private Button loginBtn;
     private Button logoutBtn;
+    private TextView loginMsgTextView;
     private TextView userNameView;
     private TextView passwordView;
     ProgressDialog dialog;
@@ -72,7 +73,7 @@ public class ThaviMemberPrefActivity extends Activity implements OnClickListener
             editor = settingS.edit();
 
             setContentView(R.layout.thaivi_member_layout);
-
+            loginMsgTextView = (TextView) findViewById(R.id.loginMsgText);
             userNameView = (TextView) findViewById(R.id.username);
             passwordView = (TextView) findViewById(R.id.password);
 
@@ -89,8 +90,11 @@ public class ThaviMemberPrefActivity extends Activity implements OnClickListener
             loginMsg = Utils.isNull(settingS.getString("loginmsg", ""));
 
             if(loginMsg.equals("login_pass")){
+                loginMsgTextView.setText(getString(R.string.login_action_success));
                 userNameView.setText(userName);
                 passwordView.setText(password);
+            }else{
+                loginMsgTextView.setText(getString(R.string.login_action_no));
             }
 
         }
@@ -117,12 +121,14 @@ public class ThaviMemberPrefActivity extends Activity implements OnClickListener
                 //log.debug("passAuthen:"+passAuthen);
 
                 if( !passAuthen){
+                    loginMsgTextView.setText(getString(R.string.login_action_fail));
                     String authenMsg = " UserName["+userName+"] และ  Password[*****]ของ(Thaivi.org)ไม่ถูกต้อง หรือไม่มีสิทธิเข้าห้องสมาชิกสมาคม ";
                     Toast.makeText(ThaviMemberPrefActivity.this, authenMsg, Toast.LENGTH_LONG).show();
                     authenMsg = "";
                     JSoupHelperAuthen.jsoupHelperAuthen = null;
                     jsoupAuthen = null;
                 }else{
+                    loginMsgTextView.setText(getString(R.string.login_action_success));
                     editor.putString("username", userName);
                     editor.putString("password", password);
                     editor.putString("loginmsg", "login_pass");

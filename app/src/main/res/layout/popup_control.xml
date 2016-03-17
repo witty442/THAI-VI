@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout 
     android:id="@+id/popup_list_control_id"
-	android:layout_width="wrap_content" 
+	android:layout_width="match_parent"
 	android:layout_height="wrap_content" 
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:background="@color/font_color_white"
+	android:background="@color/font_color_black"
 	>
+    <TableRow android:id="@+id/tableRowStartId" android:layout_margin="1dp"
+        android:background="@color/font_color_black"
+        android:layout_height="60dp">
+        <TextView
+            android:id="@+id/gotoPageText"
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:textSize="10sp"
+            android:text="text1"
+            android:textStyle="bold"
+            android:textColor="@color/bg_color_black"/>
+        </TableRow>
 
-    
-	<TableRow android:id="@+id/tableRowHomeId" android:layout_margin="1dp" 
-	    android:background="@color/color_green_1">
+    <TableRow android:id="@+id/tableRowHomeId" android:layout_margin="1dp"
+	    android:background="@color/color_green_1" android:visibility="gone">
 		 <Button
            android:id="@+id/controlHomeBtn_Temp"
            style="@style/button_text_control"
@@ -24,11 +35,10 @@
            android:layout_width="fill_parent"
            android:layout_height="36dp"
            android:layout_gravity="left"
-           android:background="@android:color/transparent"
-           />
+           android:background="@android:color/transparent"/>
      </TableRow>
      <TableRow android:id="@+id/tableRowAnnounceId" android:layout_margin="1dp" 
-	    android:background="@color/color_green_1">
+	    android:background="@color/color_green_1" android:visibility="gone">
 		 <Button
            android:id="@+id/controlAnnounceBtn_Temp"
            style="@style/button_text_control"
@@ -43,12 +53,12 @@
            android:layout_width="fill_parent"
            android:layout_height="36dp"
            android:layout_gravity="left"
-           android:background="@android:color/transparent"
-           />
+           android:background="@android:color/transparent"/>
      </TableRow>
      
 	<TableRow android:id="@+id/tableRowSearchId"
-	    android:layout_margin="1dp" android:background="@color/color_green_1">
+	    android:layout_margin="1dp" android:background="@color/color_green_1"
+        android:visibility="gone">
 		 <Button
            android:id="@+id/controlSearchBtn_Temp"
            style="@style/button_text_control"
@@ -63,11 +73,11 @@
            android:layout_width="fill_parent"
            android:layout_height="36dp"
            android:layout_gravity="left"
-           android:background="@android:color/transparent"
-           />
+           android:background="@android:color/transparent"/>
      </TableRow>
    
-    <TableRow android:id="@+id/tableRowDelId" android:layout_margin="1dp" android:background="@color/color_green_1">
+    <TableRow android:id="@+id/tableRowDelId" android:layout_margin="1dp"
+        android:background="@color/color_green_1"  android:visibility="gone">
            <Button
                 android:id="@+id/controlDelBtn_Temp"
                 style="@style/button_text_control"
@@ -85,7 +95,8 @@
                 android:background="@android:color/transparent" />
     </TableRow>
    
-    <TableRow android:id="@+id/tableRowSaveId" android:layout_margin="1dp" android:background="@color/color_green_1">
+    <TableRow android:id="@+id/tableRowSaveId" android:layout_margin="1dp"
+        android:background="@color/color_green_1" android:visibility="gone">
             <Button
                 android:id="@+id/controlSaveBtn_Temp"
                 style="@style/button_text_control"
@@ -103,7 +114,8 @@
                 android:background="@android:color/transparent" />
     </TableRow>
   
-    <TableRow android:id="@+id/tableRowBookmarkId" android:layout_margin="1dp" android:background="@color/color_green_1">      
+    <TableRow android:id="@+id/tableRowBookmarkId" android:layout_margin="1dp"
+        android:background="@color/color_green_1"  android:visibility="gone">
              <Button
                 android:id="@+id/controlBookmarkBtn_Temp"
                 style="@style/button_text_control"
@@ -118,17 +130,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="36dp"
                 android:layout_gravity="left"
-                android:background="@android:color/transparent"  />
+                android:background="@android:color/transparent"/>
        </TableRow>
 
-   <TableRow android:id="@+id/tableRowRefreshId" android:layout_margin="1dp" android:background="@color/color_green_1">
+   <TableRow android:id="@+id/tableRowRefreshId" android:layout_margin="1dp"
+       android:background="@color/color_green_1"  android:visibility="gone">
             <Button
                 android:id="@+id/controlRefreshBtn_Temp"
                 style="@style/button_text_control"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/b_refresh" />
+                android:background="@drawable/b_refresh"/>
             <Button
                 android:id="@+id/controlRefreshBtn"
                 android:text="Refresh"
@@ -136,10 +149,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="36dp"
                 android:layout_gravity="left"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"/>
             
     </TableRow>
-    <TableRow android:id="@+id/tableRowTopId" android:layout_margin="1dp" android:background="@color/color_green_1">
+    <TableRow android:id="@+id/tableRowTopId" android:layout_margin="1dp"
+        android:background="@color/color_green_1"  android:visibility="gone">
         <Button
                 android:id="@+id/controlTopBtn_Temp"
                 style="@style/button_text_2"
@@ -155,17 +169,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="36dp"
                 android:layout_gravity="left"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"/>
     </TableRow>
     
-     <TableRow android:id="@+id/tableRowBottomId" android:layout_margin="1dp" android:background="@color/color_green_1">
+     <TableRow android:id="@+id/tableRowBottomId" android:layout_margin="1dp"
+         android:background="@color/color_green_1"  android:visibility="gone">
            <Button
                 android:id="@+id/controlBottomBtn_Temp"
                 style="@style/button_text_2"
                 android:layout_width="36dp"
                 android:layout_height="32dp"
                 android:layout_gravity="right|center"
-                android:background="@drawable/b_bottom" />
+                android:background="@drawable/b_bottom"/>
            <Button
                 android:id="@+id/controlBottomBtn"
                 android:text="ไปล่างสุด"
@@ -173,7 +188,36 @@
                 android:layout_width="120dp"
                 android:layout_height="36dp"
                 android:layout_gravity="left"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"/>
     </TableRow>
-    
+    <TableRow android:id="@+id/tableRowAddStockId" android:layout_margin="1dp"
+        android:background="@color/color_green_1"  android:visibility="gone">
+        <Button
+            android:id="@+id/controlAddStockBtn_Temp"
+            style="@style/button_text_2"
+            android:layout_width="36dp"
+            android:layout_height="32dp"
+            android:layout_gravity="right|center"
+            android:background="@android:color/transparent"/>
+        <Button
+            android:id="@+id/controlAddStockBtn"
+            android:text="เพิ่มรายชื่อหุ้น"
+            style="@style/button_text_control"
+            android:layout_width="120dp"
+            android:layout_height="36dp"
+            android:layout_gravity="left"
+            android:background="@android:color/transparent"/>
+    </TableRow>
+    <TableRow android:id="@+id/tableRowEndId" android:layout_margin="1dp"
+        android:background="@color/font_color_black"
+        android:layout_height="60dp" >
+        <TextView
+            android:id="@+id/gotoPageText2"
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:textSize="10sp"
+            android:text="text1"
+            android:textStyle="bold"
+            android:textColor="@color/bg_color_black"/>
+    </TableRow>
 </TableLayout>

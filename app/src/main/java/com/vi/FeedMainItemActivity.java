@@ -94,7 +94,7 @@ public class FeedMainItemActivity extends Activity implements OnItemClickListene
 
     private PopupWindow popWindow;
     private PopupWindow popControlWindow;
-    private PopupWindow popMainWindow;
+    private PopupWindow popItemLongClickWindow;
 
     private int listViewIndex = 0;
     private int listViewTop = 0;
@@ -270,10 +270,9 @@ public class FeedMainItemActivity extends Activity implements OnItemClickListene
             //Check UserName and Password ThaiVi and Internet Connection
             boolean verifyLogin = true;
             if( Constants.FEED_TYPE_BORAD_100_NEW.equals(currentFeed.getType()) && jsoupAuthen == null){
-                authenMsg = getResources().getString(R.string.no_authen_thaivi_msg);
+                authenMsg = getString(R.string.no_authen_thaivi_msg);
                 verifyLogin = false;
             }
-
             /** check database exist **/
 		   /* log.debug("Feed Item:"+currentFeed.getTotalItem());
 		    log.debug("Action In Activity["+action+"]");
@@ -426,25 +425,26 @@ public class FeedMainItemActivity extends Activity implements OnItemClickListene
         TableLayout viewGroup = (TableLayout) findViewById(R.id.popup_list_control_id);
         View layout = layoutInflater.inflate(R.layout.popup_control, viewGroup);
 
-        popControlWindow = new PopupWindow(layout,LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+        int popControlWindowWidth =getWindowManager().getDefaultDisplay().getWidth()-100;
+        int popControlWindowHeight = LayoutParams.WRAP_CONTENT;
+
+        popControlWindow = new PopupWindow(layout,popControlWindowWidth,popControlWindowHeight);
         popControlWindow.setBackgroundDrawable(new BitmapDrawable());
         popControlWindow.setOutsideTouchable(true);
         popControlWindow.setFocusable(true);
         popControlWindow.setTouchable(true);
 
-        int y = 150;
-        int x = getWindowManager().getDefaultDisplay().getWidth()-150;
+        int y = getWindowManager().getDefaultDisplay().getHeight()/5;
+        int x = 50;//getWindowManager().getDefaultDisplay().getWidth()-150;
 
         //log.debug("x["+x+"]y["+y+"]");
-        popControlWindow.showAtLocation(layout, Gravity.TOP, x, y);
+        popControlWindow.showAtLocation(layout, Gravity.NO_GRAVITY, x, y);
 
         TableRow tableRowSearchId = (TableRow)layout.findViewById(R.id.tableRowSearchId);
         TableRow tableRowSaveId = (TableRow)layout.findViewById(R.id.tableRowSaveId);
         TableRow tableRowBookmarkId = (TableRow)layout.findViewById(R.id.tableRowBookmarkId);
         TableRow tableRowDelId = (TableRow)layout.findViewById(R.id.tableRowDelId);
         TableRow tableRowRefreshId = (TableRow)layout.findViewById(R.id.tableRowRefreshId);
-        TableRow tableRowTopId = (TableRow)layout.findViewById(R.id.tableRowTopId);
-        TableRow tableRowBottomId = (TableRow)layout.findViewById(R.id.tableRowBottomId);
         TableRow tableRowHomeId = (TableRow)layout.findViewById(R.id.tableRowHomeId);
         TableRow tableRowAnnounceId = (TableRow)layout.findViewById(R.id.tableRowAnnounceId);
 
@@ -456,27 +456,16 @@ public class FeedMainItemActivity extends Activity implements OnItemClickListene
             tableRowSearchId.setVisibility(View.GONE);
         }
 
-        //Hide
-        tableRowSaveId.setVisibility(View.GONE);
-        tableRowBookmarkId.setVisibility(View.GONE);
-        tableRowDelId.setVisibility(View.GONE);
-        tableRowTopId.setVisibility(View.GONE);
-        tableRowBottomId.setVisibility(View.GONE);
+        //Show
+        tableRowSearchId.setVisibility(View.VISIBLE);
+        tableRowRefreshId.setVisibility(View.VISIBLE);
+        tableRowHomeId.setVisibility(View.VISIBLE);
+        tableRowAnnounceId.setVisibility(View.VISIBLE);
 
         Button searchButton = (Button)layout.findViewById(R.id.controlSearchBtn);
-        Button searchButtonImg = (Button)layout.findViewById(R.id.controlSearchBtn_Temp);
-        Button saveButton = (Button)layout.findViewById(R.id.controlSaveBtn);
-        Button saveButtonImg = (Button)layout.findViewById(R.id.controlSaveBtn_Temp);
-        Button bookmarkButton = (Button)layout.findViewById(R.id.controlBookmarkBtn);
-        Button bookmarkButtonImg = (Button)layout.findViewById(R.id.controlBookmarkBtn_Temp);
-        Button delButton = (Button)layout.findViewById(R.id.controlDelBtn);
-        Button delButtonImg = (Button)layout.findViewById(R.id.controlDelBtn_Temp);
         Button refreshButton = (Button)layout.findViewById(R.id.controlRefreshBtn);
-        Button refreshButtonImg = (Button)layout.findViewById(R.id.controlRefreshBtn_Temp);
         Button homeButton = (Button)layout.findViewById(R.id.controlHomeBtn);
-        Button homeButtonImg = (Button)layout.findViewById(R.id.controlHomeBtn_Temp);
         Button announceButton = (Button)layout.findViewById(R.id.controlAnnounceBtn);
-
 
         tableRowSearchId.setOnClickListener(new OnClickListener(){
             public void onClick(View v){
@@ -539,35 +528,29 @@ public class FeedMainItemActivity extends Activity implements OnItemClickListene
 
         TableLayout viewGroup = (TableLayout) findViewById(R.id.popup_list_control_id);
         View layout = layoutInflater.inflate(R.layout.popup_control, viewGroup);
+        int popControlWindowWidth =getWindowManager().getDefaultDisplay().getWidth()-100;
+        int popControlWindowHeight = LayoutParams.WRAP_CONTENT;
 
-        popMainWindow = new PopupWindow(layout,getDisplayPopControl(),LayoutParams.WRAP_CONTENT);
-        popMainWindow.setBackgroundDrawable(new BitmapDrawable());
-        popMainWindow.setOutsideTouchable(true);
-        popMainWindow.setFocusable(true);
-        popMainWindow.setTouchable(true);
+        popItemLongClickWindow = new PopupWindow(layout,popControlWindowWidth,popControlWindowHeight);
+        popItemLongClickWindow.setBackgroundDrawable(new BitmapDrawable());
+        popItemLongClickWindow.setOutsideTouchable(true);
+        popItemLongClickWindow.setFocusable(true);
+        popItemLongClickWindow.setTouchable(true);
 
-        int y = 150;
-        int x = getWindowManager().getDefaultDisplay().getWidth()-150;
+        int y = getWindowManager().getDefaultDisplay().getHeight()/5;
+        int x = 50;//getWindowManager().getDefaultDisplay().getWidth()-150;
+
         //log.debug("x["+x+"]y["+y+"]");
-        popMainWindow.showAtLocation(layout, Gravity.TOP, x, y);
+        popItemLongClickWindow.showAtLocation(layout, Gravity.NO_GRAVITY, x, y);
 
-        TableRow tableRowSearchId = (TableRow)layout.findViewById(R.id.tableRowSearchId);
         TableRow tableRowSaveId = (TableRow)layout.findViewById(R.id.tableRowSaveId);
         TableRow tableRowBookmarkId = (TableRow)layout.findViewById(R.id.tableRowBookmarkId);
         TableRow tableRowDelId = (TableRow)layout.findViewById(R.id.tableRowDelId);
-        TableRow tableRowRefreshId = (TableRow)layout.findViewById(R.id.tableRowRefreshId);
-        TableRow tableRowHomeId = (TableRow)layout.findViewById(R.id.tableRowHomeId);
-        TableRow tableRowTopId = (TableRow)layout.findViewById(R.id.tableRowTopId);
-        TableRow tableRowBottomId = (TableRow)layout.findViewById(R.id.tableRowBottomId);
-        TableRow tableRowAnnounceId = (TableRow)layout.findViewById(R.id.tableRowAnnounceId);
 
-        //Hide
-        tableRowSearchId.setVisibility(View.GONE);
-        tableRowRefreshId.setVisibility(View.GONE);
-        tableRowAnnounceId.setVisibility(View.GONE);
-        tableRowHomeId.setVisibility(View.GONE);
-        tableRowTopId.setVisibility(View.GONE);
-        tableRowBottomId.setVisibility(View.GONE);
+        //Show
+        tableRowSaveId.setVisibility(View.VISIBLE);
+        tableRowBookmarkId.setVisibility(View.VISIBLE);
+        tableRowDelId.setVisibility(View.VISIBLE);
 
         Button saveButton = (Button)layout.findViewById(R.id.controlSaveBtn);
         Button bookmarkButton = (Button)layout.findViewById(R.id.controlBookmarkBtn);
@@ -606,41 +589,42 @@ public class FeedMainItemActivity extends Activity implements OnItemClickListene
         tableRowSaveId.setOnClickListener(new OnClickListener(){
             public void onClick(View v){
                 saveTopic();
-                popMainWindow.dismiss();
+                popItemLongClickWindow.dismiss();
             }
         });
         saveButton.setOnClickListener(new OnClickListener(){
             public void onClick(View v){
                 saveTopic();
-                popMainWindow.dismiss();
+                popItemLongClickWindow.dismiss();
             }
         });
-
         tableRowBookmarkId.setOnClickListener(new OnClickListener(){
             public void onClick(View v){
                 saveBookmark();
-                popMainWindow.dismiss();
+
+                popItemLongClickWindow.dismiss();
             }
         });
         bookmarkButton.setOnClickListener(new OnClickListener(){
             public void onClick(View v){
                 saveBookmark();
-                popMainWindow.dismiss();
+                popItemLongClickWindow.dismiss();
             }
         });
-
         tableRowDelId.setOnClickListener(new OnClickListener(){
             public void onClick(View v){
                 removeTopic();
-                popMainWindow.dismiss();
+                popItemLongClickWindow.dismiss();
             }
         });
         delButton.setOnClickListener(new OnClickListener(){
             public void onClick(View v){
                 removeTopic();
-                popMainWindow.dismiss();
+                popItemLongClickWindow.dismiss();
             }
         });
+
+        popItemLongClickWindow.update();
     }
 
     //Save File to Local
@@ -795,16 +779,20 @@ public class FeedMainItemActivity extends Activity implements OnItemClickListene
         TableLayout viewGroup = (TableLayout) findViewById(R.id.popup_list_control_id);
         View layout = layoutInflater.inflate(R.layout.popup_search, viewGroup);
 
-        popWindow = new PopupWindow(layout,LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+        int popControlWindowWidth =getWindowManager().getDefaultDisplay().getWidth()-100;
+        int popControlWindowHeight = LayoutParams.WRAP_CONTENT;
+
+        popWindow = new PopupWindow(layout,popControlWindowWidth,popControlWindowHeight);
         popWindow.setBackgroundDrawable(new BitmapDrawable());
         popWindow.setOutsideTouchable(true);
         popWindow.setFocusable(true);
         popWindow.setTouchable(true);
 
-        int y = 150;
-        int x = 40;
-        //log.debug("x["+x+"]y["+y+"]");
-        popWindow.showAtLocation(layout, Gravity.TOP, x, y);
+        int y = getWindowManager().getDefaultDisplay().getHeight()/5;
+        int x = 50;//getWindowManager().getDefaultDisplay().getWidth()-150;
+
+        log.debug("x["+x+"]y["+y+"]");
+        popWindow.showAtLocation(layout, Gravity.NO_GRAVITY, x, y);
 
         final EditText searchCriteria = (EditText)layout.findViewById(R.id.searchText);
         Button searchButton = (Button)layout.findViewById(R.id.popupSearchBtn);

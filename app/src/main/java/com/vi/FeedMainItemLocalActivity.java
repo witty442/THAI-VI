@@ -218,46 +218,26 @@ public class FeedMainItemLocalActivity extends Activity implements OnItemClickLi
         TableLayout viewGroup = (TableLayout) findViewById(R.id.popup_list_control_id);
         View layout = layoutInflater.inflate(R.layout.popup_control, viewGroup);
 
-        popControlWindow = new PopupWindow(layout,300,LayoutParams.WRAP_CONTENT);
+        int popControlWindowWidth =getWindowManager().getDefaultDisplay().getWidth()-100;
+        int popControlWindowHeight = LayoutParams.WRAP_CONTENT;
+
+        popControlWindow = new PopupWindow(layout,popControlWindowWidth,popControlWindowHeight);
         popControlWindow.setBackgroundDrawable(new BitmapDrawable());
         popControlWindow.setOutsideTouchable(true);
         popControlWindow.setFocusable(true);
         popControlWindow.setTouchable(true);
 
-        int y = 150;
-        int x = getWindowManager().getDefaultDisplay().getWidth()-150;
+        int y = getWindowManager().getDefaultDisplay().getHeight()/5;
+        int x = 50;//getWindowManager().getDefaultDisplay().getWidth()-150;
 
         log.debug("x["+x+"]y["+y+"]");
-        popControlWindow.showAtLocation(layout, Gravity.TOP, x, y);
+        popControlWindow.showAtLocation(layout, Gravity.NO_GRAVITY, x, y);
 
         TableRow tableRowHomeId = (TableRow)layout.findViewById(R.id.tableRowHomeId);
-        TableRow tableRowSearchId = (TableRow)layout.findViewById(R.id.tableRowSearchId);
-        TableRow tableRowSaveId = (TableRow)layout.findViewById(R.id.tableRowSaveId);
-        TableRow tableRowBookmarkId = (TableRow)layout.findViewById(R.id.tableRowBookmarkId);
-        TableRow tableRowDelId = (TableRow)layout.findViewById(R.id.tableRowDelId);
-        TableRow tableRowRefreshId = (TableRow)layout.findViewById(R.id.tableRowRefreshId);
-        TableRow tableRowTopId = (TableRow)layout.findViewById(R.id.tableRowTopId);
-        TableRow tableRowBottomId = (TableRow)layout.findViewById(R.id.tableRowBottomId);
 
-        //Hide
-        tableRowSearchId.setVisibility(View.GONE);
-        tableRowRefreshId.setVisibility(View.GONE);
-        tableRowSaveId.setVisibility(View.GONE);
-        tableRowBookmarkId.setVisibility(View.GONE);
-        tableRowDelId.setVisibility(View.GONE);
-        tableRowTopId.setVisibility(View.GONE);
-        tableRowBottomId.setVisibility(View.GONE);
-	      
-	      /*Button searchButton = (Button)layout.findViewById(R.id.controlSearchBtn);
-	      Button searchButtonImg = (Button)layout.findViewById(R.id.controlSearchBtn_Temp);
-	      Button saveButton = (Button)layout.findViewById(R.id.controlSaveBtn);
-	      Button saveButtonImg = (Button)layout.findViewById(R.id.controlSaveBtn_Temp);
-	      Button bookmarkButton = (Button)layout.findViewById(R.id.controlBookmarkBtn);
-	      Button bookmarkButtonImg = (Button)layout.findViewById(R.id.controlBookmarkBtn_Temp);
-	      Button delButton = (Button)layout.findViewById(R.id.controlDelBtn);
-	      Button delButtonImg = (Button)layout.findViewById(R.id.controlDelBtn_Temp);
-	      Button refreshButton = (Button)layout.findViewById(R.id.controlRefreshBtn);
-	      Button refreshButtonImg = (Button)layout.findViewById(R.id.controlRefreshBtn_Temp);*/
+        //Show
+        tableRowHomeId.setVisibility(View.VISIBLE);
+
         Button homeButton = (Button)layout.findViewById(R.id.controlHomeBtn);
         Button homeButtonImg = (Button)layout.findViewById(R.id.controlHomeBtn_Temp);
 

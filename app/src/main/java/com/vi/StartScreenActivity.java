@@ -51,7 +51,7 @@ public class StartScreenActivity extends Activity {
  	   }
  	   
  	    
-        mHandler.postDelayed(mPendingLauncherRunnable, 500);
+        mHandler.postDelayed(mPendingLauncherRunnable, 700);
     }
     
     @Override

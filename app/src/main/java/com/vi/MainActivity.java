@@ -27,6 +27,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vi.adapter.MainAdapter;
 import com.vi.common.Catalog;
@@ -233,16 +234,16 @@ public class MainActivity extends Activity implements OnItemClickListener,OnClic
                 }
                 allFavList.add(c);
 
-                c = new Catalog();
+                /*c = new Catalog();
                 c.setId(7);
                 c.setTitle("คลังมัลติมีเดีย");
-                c.setType(Constants.FEED_TYPE_VIDEO);
+                c.setType(Constants.FEED_TYPE_MEDIA);
                 c.setAuthor("Thaivi.org");
-                feeds = mDbFeedAdapter.getFeeds(Constants.FEED_TYPE_VIDEO);
+                feeds = mDbFeedAdapter.getFeeds(Constants.FEED_TYPE_MEDIA);
                 if(feeds != null){
                     c.setTotalItem(feeds.size());
                 }
-                allFavList.add(c);
+                allFavList.add(c);*/
 
                 c = new Catalog();
                 c.setId(4);
@@ -374,14 +375,23 @@ public class MainActivity extends Activity implements OnItemClickListener,OnClic
         TextView topicTypeView = (TextView) v.findViewById(R.id.topicType);
 
         //log.debug("topicTypeView["+topicTypeView.getText().toString() +"]topten["+topten.getText().toString()+"]");
-        if(Constants.FEED_TYPE_BORAD_100.equalsIgnoreCase(topicTypeView.getText().toString())
-                || Constants.FEED_TYPE_BORAD_100_NEW.equalsIgnoreCase(topicTypeView.getText().toString())){
-
+        if(Constants.FEED_TYPE_BORAD_100.equalsIgnoreCase(topicTypeView.getText().toString())) {
             Intent intent = new Intent(MainActivity.this, FeedMainItemLocal100Activity.class);
             intent.putExtra("FEED_TITLE",titleView.getText().toString());
             intent.putExtra("FEED_TYPE",topicTypeView.getText().toString());
 
             startActivity(intent);
+        }else if(Constants.FEED_TYPE_BORAD_100_NEW.equalsIgnoreCase(topicTypeView.getText().toString())){
+
+            if( loginMsg.equals("login_pass")) {
+                Intent intent = new Intent(MainActivity.this, FeedMainItemLocal100Activity.class);
+                intent.putExtra("FEED_TITLE", titleView.getText().toString());
+                intent.putExtra("FEED_TYPE", topicTypeView.getText().toString());
+
+                startActivity(intent);
+            }else{
+                Toast.makeText(MainActivity.this, getString(R.string.no_authen_thaivi_msg), Toast.LENGTH_LONG).show();
+            }
         }else{
             if( "10".equalsIgnoreCase(topten.getText().toString())){
                 Intent intent = new Intent(MainActivity.this, FeedMainItemLocalActivity.class);

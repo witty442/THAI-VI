@@ -16,6 +16,7 @@
 				android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 				style="@style/item_selected_title"/>
+
 		        <TextView
 			    android:id="@+id/title"
 			    android:text="title"
@@ -46,10 +47,7 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            style="@style/item_selected_pubdate"/>
-		       
 		  
 		      </TableRow>
-		      
-		      
 	   </TableLayout>
 </LinearLayout>

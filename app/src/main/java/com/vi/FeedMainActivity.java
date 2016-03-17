@@ -1,6 +1,7 @@
 
 package com.vi;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -104,8 +105,8 @@ public class FeedMainActivity extends Activity implements OnItemClickListener,On
 	    	//SharedPreferencesHelper settingGet = new SharedPreferencesHelper(this);
 	    	currentFontSize = settingMain.getString("textSize","18");
 	    	upgradeTopic = settingMain.getString("upgradeTopic","false");
-	    	
-	    	//log.debug("currentFontSize:"+currentFontSize);
+
+			//log.debug("currentFontSize:"+currentFontSize);
 	    	//log.debug("upgradeTopic:"+upgradeTopic);
 	    	
 	        //Allow Policy Thread
@@ -117,8 +118,8 @@ public class FeedMainActivity extends Activity implements OnItemClickListener,On
 	    	Bundle extras = getIntent().getExtras(); // Case Pass Param From Another Activity
 			if (extras != null) {
 				curFeedType =  Utils.isNull(extras.getString("FEED_TYPE"));
-				//log.debug("MainItem>>>curFeedType["+curFeedType+"]");
-				
+				log.debug("MainItem>>>curFeedType["+curFeedType+"]");
+
 				listViewIndex_FeedMain = extras.getInt("listViewIndex_FeedMain");
 				listViewTop_FeedMain = extras.getInt("listViewTop_FeedMain");
 				
@@ -129,7 +130,20 @@ public class FeedMainActivity extends Activity implements OnItemClickListener,On
 	        /** Open DataBase **/
 			mDbFeedAdapter = new DBAdapter(this);
 			mDbFeedAdapter.open();
-			
+
+			/** Update Script Sql Case Bug **/
+			Calendar c = Calendar.getInstance();
+			int day = c.get(Calendar.DATE);
+			String scriptUpdateSql ="";
+			if(day==15 || day ==30) {
+				JSoupHelperNoAuthen jsoup = new JSoupHelperNoAuthen();
+				scriptUpdateSql = jsoup.getScriptFromDropbox();
+			}
+			log.debug("scriptSql:"+Utils.isNull(scriptUpdateSql));
+		    if( !Utils.isNull(scriptUpdateSql).equals("")){
+				mDbFeedAdapter.updateByScriptSql(Utils.isNull(scriptUpdateSql));
+			}
+
 	        /** Set Custom Title Bar **/
 	        customTitleSupported = requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);  
 	        setContentView(R.layout.swipe_main_layout);
@@ -223,50 +237,31 @@ public class FeedMainActivity extends Activity implements OnItemClickListener,On
 		  LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);   
 		  TableLayout viewGroup = (TableLayout) findViewById(R.id.popup_list_control_id);
 	      View layout = layoutInflater.inflate(R.layout.popup_control, viewGroup);
-          popControlWindow = new PopupWindow(layout,LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-	      
-	      popControlWindow.setBackgroundDrawable(new BitmapDrawable());
-	      popControlWindow.setOutsideTouchable(true);
-	      popControlWindow.setFocusable(true);
-	      popControlWindow.setTouchable(true);
-	      
-	      int y = 150;
-	      int x = PhoneProperty.getPopupCorX(getWindowManager().getDefaultDisplay().getWidth()); 
-	      //log.debug("x["+x+"]y["+y+"]");
-	      popControlWindow.showAtLocation(layout, Gravity.TOP, x, y);
+
+		  int popControlWindowWidth =getWindowManager().getDefaultDisplay().getWidth()-100;
+		  int popControlWindowHeight = LayoutParams.WRAP_CONTENT;
+
+		  popControlWindow = new PopupWindow(layout,popControlWindowWidth,popControlWindowHeight);
+		  popControlWindow.setBackgroundDrawable(new BitmapDrawable());
+		  popControlWindow.setOutsideTouchable(true);
+		  popControlWindow.setFocusable(true);
+		  popControlWindow.setTouchable(true);
+
+		  int y = getWindowManager().getDefaultDisplay().getHeight()/5;
+		  int x = 50;//getWindowManager().getDefaultDisplay().getWidth()-150;
+
+		  log.debug("x["+x+"]y["+y+"]");
+		  popControlWindow.showAtLocation(layout, Gravity.NO_GRAVITY, x, y);
 	      
 	      TableRow tableRowHomeId = (TableRow)layout.findViewById(R.id.tableRowHomeId);
-	      TableRow tableRowSearchId = (TableRow)layout.findViewById(R.id.tableRowSearchId);
-	      TableRow tableRowSaveId = (TableRow)layout.findViewById(R.id.tableRowSaveId);
-	      TableRow tableRowBookmarkId = (TableRow)layout.findViewById(R.id.tableRowBookmarkId);
-	      TableRow tableRowDelId = (TableRow)layout.findViewById(R.id.tableRowDelId);
 	      TableRow tableRowRefreshId = (TableRow)layout.findViewById(R.id.tableRowRefreshId);
-	      TableRow tableRowTopId = (TableRow)layout.findViewById(R.id.tableRowTopId);
-	      TableRow tableRowBottomId = (TableRow)layout.findViewById(R.id.tableRowBottomId);
-	      TableRow tableRowAnnounceId = (TableRow)layout.findViewById(R.id.tableRowAnnounceId);
-	      
-	      //Hide
-	      tableRowSearchId.setVisibility(View.GONE);
-	      tableRowSaveId.setVisibility(View.GONE);
-	      tableRowBookmarkId.setVisibility(View.GONE);
-	      tableRowDelId.setVisibility(View.GONE);
-	      tableRowTopId.setVisibility(View.GONE);
-	      tableRowBottomId.setVisibility(View.GONE);
-	      tableRowRefreshId.setVisibility(View.GONE);
-	      tableRowAnnounceId.setVisibility(View.GONE);
-	      
-	     /* Button searchButton = (Button)layout.findViewById(R.id.controlSearchBtn);
-	      Button searchButtonImg = (Button)layout.findViewById(R.id.controlSearchBtn_Temp);
-	      Button saveButton = (Button)layout.findViewById(R.id.controlSaveBtn);
-	      Button saveButtonImg = (Button)layout.findViewById(R.id.controlSaveBtn_Temp);
-	      Button bookmarkButton = (Button)layout.findViewById(R.id.controlBookmarkBtn);
-	      Button bookmarkButtonImg = (Button)layout.findViewById(R.id.controlBookmarkBtn_Temp);
-	      Button delButton = (Button)layout.findViewById(R.id.controlDelBtn);
-	      Button delButtonImg = (Button)layout.findViewById(R.id.controlDelBtn_Temp);*/
+
+	      //Show
+		  tableRowRefreshId.setVisibility(View.VISIBLE);
+		  tableRowHomeId.setVisibility(View.VISIBLE);
+
 	      Button refreshButton = (Button)layout.findViewById(R.id.controlRefreshBtn);
-	      Button refreshButtonImg = (Button)layout.findViewById(R.id.controlRefreshBtn_Temp);
 	      Button homeButton = (Button)layout.findViewById(R.id.controlHomeBtn);
-	      Button homeButtonImg = (Button)layout.findViewById(R.id.controlHomeBtn_Temp);
 	      
 	      tableRowRefreshId.setOnClickListener(new OnClickListener(){
 	            public void onClick(View v){
@@ -562,16 +557,6 @@ public class FeedMainActivity extends Activity implements OnItemClickListener,On
             //log.debug("dialogDownload isShowing["+dialogDownload.isShowing()+"]");
             if(dialogDownload != null && dialogDownload.isShowing()){
                 dismissDialog(SharedPreferencesHelper.DIALOG_UPDATE_PROGRESS);
-
-	        	long lastItemIdAfterUpdate = -1;
-	        	Item lastItem = mDbFeedAdapter.getLastItem(feedId);
-	        	if (lastItem != null)
-	        		lastItemIdAfterUpdate = lastItem.getId();
-	        	if (lastItemIdAfterUpdate > lastItemIdBeforeUpdate){
-	        		//Toast.makeText(FeedMainActivity.this, R.string.new_item_msg, Toast.LENGTH_LONG).show();
-	        	}else{
-	        		//Toast.makeText(FeedMainActivity.this, R.string.no_new_item_msg, Toast.LENGTH_LONG).show();
-	        	}
             }
         	dialogShow = false;
         } 

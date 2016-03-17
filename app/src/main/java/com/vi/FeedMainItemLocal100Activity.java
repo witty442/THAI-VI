@@ -1,6 +1,7 @@
 
 package com.vi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ActionBar.LayoutParams;
@@ -29,13 +30,17 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.vi.adapter.AddStockArrayAdapter;
 import com.vi.adapter.FeedMainItemAdapter;
+import com.vi.adapter.GotoPageArrayAdapter;
 import com.vi.common.Control;
 import com.vi.common.Feed;
 import com.vi.common.Item;
@@ -73,7 +78,8 @@ public class FeedMainItemLocal100Activity extends Activity implements OnItemClic
     int listViewIndex = 0;
     int listViewTop = 0;
     private PopupWindow popControlWindow;
-    private PopupWindow popControlWindow2;
+    private PopupWindow popLongClickWindow;
+
     //private JSoupHelperAuthen jsoupAuthen = null;
     private String authenMsg = "";
     boolean verifyLogin =true;
@@ -235,7 +241,7 @@ public class FeedMainItemLocal100Activity extends Activity implements OnItemClic
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){
-        log.debug("KeyCode:"+keyCode+",:backCode:"+KeyEvent.KEYCODE_BACK);
+        log.debug("KeyCode:" + keyCode + ",:backCode:" + KeyEvent.KEYCODE_BACK);
         if(keyCode == KeyEvent.KEYCODE_BACK) {
             backAction();
         }
@@ -268,10 +274,8 @@ public class FeedMainItemLocal100Activity extends Activity implements OnItemClic
         }
         // positionX = new Double(event.getX()).intValue();
         //positionY = new Double(event.getY()).intValue();
-
         return false;
     }
-
 
     public void customTitleBar(String text) {
         // set up custom title
@@ -351,39 +355,32 @@ public class FeedMainItemLocal100Activity extends Activity implements OnItemClic
         TableLayout viewGroup = (TableLayout) findViewById(R.id.popup_list_control_id);
         View layout = layoutInflater.inflate(R.layout.popup_control, viewGroup);
 
-        popControlWindow = new PopupWindow(layout,LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+        int popControlWindowWidth =getWindowManager().getDefaultDisplay().getWidth()-100;
+        int popControlWindowHeight = LayoutParams.WRAP_CONTENT;
+
+        popControlWindow = new PopupWindow(layout,popControlWindowWidth,popControlWindowHeight);
         popControlWindow.setBackgroundDrawable(new BitmapDrawable());
         popControlWindow.setOutsideTouchable(true);
         popControlWindow.setFocusable(true);
         popControlWindow.setTouchable(true);
 
-        int y = 150;
-        int x = getWindowManager().getDefaultDisplay().getWidth()-150;
+        int y = getWindowManager().getDefaultDisplay().getHeight()/5;
+        int x = 50;//getWindowManager().getDefaultDisplay().getWidth()-150;
 
         log.debug("x["+x+"]y["+y+"]");
-        popControlWindow.showAtLocation(layout, Gravity.TOP, x, y);
+        popControlWindow.showAtLocation(layout, Gravity.NO_GRAVITY, x, y);
 
         TableRow tableRowHomeId = (TableRow)layout.findViewById(R.id.tableRowHomeId);
-        TableRow tableRowSearchId = (TableRow)layout.findViewById(R.id.tableRowSearchId);
-        TableRow tableRowSaveId = (TableRow)layout.findViewById(R.id.tableRowSaveId);
-        TableRow tableRowBookmarkId = (TableRow)layout.findViewById(R.id.tableRowBookmarkId);
-        TableRow tableRowDelId = (TableRow)layout.findViewById(R.id.tableRowDelId);
-        TableRow tableRowRefreshId = (TableRow)layout.findViewById(R.id.tableRowRefreshId);
-        TableRow tableRowTopId = (TableRow)layout.findViewById(R.id.tableRowTopId);
-        TableRow tableRowBottomId = (TableRow)layout.findViewById(R.id.tableRowBottomId);
+        TableRow tableRowAddStockId = (TableRow)layout.findViewById(R.id.tableRowAddStockId);
 
-        //Hide
-        tableRowSearchId.setVisibility(View.GONE);
-        tableRowRefreshId.setVisibility(View.GONE);
-        tableRowSaveId.setVisibility(View.GONE);
-        tableRowBookmarkId.setVisibility(View.GONE);
-        tableRowDelId.setVisibility(View.GONE);
-        tableRowTopId.setVisibility(View.GONE);
-        tableRowBottomId.setVisibility(View.GONE);
+        //Show
+        tableRowHomeId.setVisibility(View.VISIBLE);
+        tableRowAddStockId.setVisibility(View.VISIBLE);
 
         Button homeButton = (Button)layout.findViewById(R.id.controlHomeBtn);
-        Button homeButtonImg = (Button)layout.findViewById(R.id.controlHomeBtn_Temp);
+        Button addStockButton = (Button)layout.findViewById(R.id.controlAddStockBtn);
 
+        /** Home Button **/
         tableRowHomeId.setOnClickListener(new OnClickListener(){
             public void onClick(View v){
                 Intent intent = new Intent(FeedMainItemLocal100Activity.this, MainActivity.class);
@@ -397,7 +394,30 @@ public class FeedMainItemLocal100Activity extends Activity implements OnItemClic
             }
         });
 
+        /** Add Stock Button **/
+        tableRowAddStockId.setOnClickListener(new OnClickListener(){
+            public void onClick(View v){
+                getToAddStockAc();
+
+            }
+        });
+        addStockButton.setOnClickListener(new OnClickListener(){
+            public void onClick(View v){
+                getToAddStockAc();
+            }
+        });
+
         popControlWindow.update();
+    }
+
+    public void getToAddStockAc(){
+        Intent intent = new Intent(FeedMainItemLocal100Activity.this, AddStockActivity.class);
+        intent.putExtra("FEED_TITLE",feedTitle);
+        intent.putExtra("FEED_TYPE",feedType);
+        intent.putExtra("listViewIndex",listViewIndex);
+        intent.putExtra("listViewTop",listViewTop);
+
+        startActivity(intent);
     }
 
     public void dispControlOnLongTouchItemInListView(){
@@ -407,37 +427,24 @@ public class FeedMainItemLocal100Activity extends Activity implements OnItemClic
         TableLayout viewGroup = (TableLayout) findViewById(R.id.popup_list_control_id);
         View layout = layoutInflater.inflate(R.layout.popup_control, viewGroup);
 
-        popControlWindow2 = new PopupWindow(layout,LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-        popControlWindow2.setBackgroundDrawable(new BitmapDrawable());
-        popControlWindow2.setOutsideTouchable(true);
-        popControlWindow2.setFocusable(true);
-        popControlWindow2.setTouchable(true);
+        int popControlWindowWidth =getWindowManager().getDefaultDisplay().getWidth()-100;
+        int popControlWindowHeight = LayoutParams.WRAP_CONTENT;
 
-        int y = 150;
-        int x = getWindowManager().getDefaultDisplay().getWidth()-300;
+        popLongClickWindow = new PopupWindow(layout,popControlWindowWidth,popControlWindowHeight);
+        popLongClickWindow.setBackgroundDrawable(new BitmapDrawable());
+        popLongClickWindow.setOutsideTouchable(true);
+        popLongClickWindow.setFocusable(true);
+        popLongClickWindow.setTouchable(true);
+
+        int y = getWindowManager().getDefaultDisplay().getHeight()/5;
+        int x = 50;//getWindowManager().getDefaultDisplay().getWidth()-150;
 
         log.debug("x["+x+"]y["+y+"]");
-        popControlWindow2.showAtLocation(layout, Gravity.CENTER_HORIZONTAL, 0, 0);
+        popLongClickWindow.showAtLocation(layout, Gravity.NO_GRAVITY, x, y);
 
-        TableRow tableRowSearchId = (TableRow)layout.findViewById(R.id.tableRowSearchId);
-        TableRow tableRowSaveId = (TableRow)layout.findViewById(R.id.tableRowSaveId);
-        TableRow tableRowBookmarkId = (TableRow)layout.findViewById(R.id.tableRowBookmarkId);
         TableRow tableRowDelId = (TableRow)layout.findViewById(R.id.tableRowDelId);
-        TableRow tableRowRefreshId = (TableRow)layout.findViewById(R.id.tableRowRefreshId);
-        TableRow tableRowHomeId = (TableRow)layout.findViewById(R.id.tableRowHomeId);
-        TableRow tableRowTopId = (TableRow)layout.findViewById(R.id.tableRowTopId);
-        TableRow tableRowBottomId = (TableRow)layout.findViewById(R.id.tableRowBottomId);
-        TableRow tableRowAnnounceId = (TableRow)layout.findViewById(R.id.tableRowAnnounceId);
-
-        //Hide
-        tableRowSearchId.setVisibility(View.GONE);
-        tableRowRefreshId.setVisibility(View.GONE);
-        tableRowAnnounceId.setVisibility(View.GONE);
-        tableRowSaveId.setVisibility(View.GONE);
-        tableRowBookmarkId.setVisibility(View.GONE);
-        tableRowHomeId.setVisibility(View.GONE);
-        tableRowTopId.setVisibility(View.GONE);
-        tableRowBottomId.setVisibility(View.GONE);
+        //Show
+        tableRowDelId.setVisibility(View.VISIBLE);
 
         Button delButton = (Button)layout.findViewById(R.id.controlDelBtn);
         delButton.setText("ลบบุ็คมาร์ค");
@@ -445,16 +452,16 @@ public class FeedMainItemLocal100Activity extends Activity implements OnItemClic
         tableRowDelId.setOnClickListener(new OnClickListener(){
             public void onClick(View v){
                 removeTopic();
-                popControlWindow2.dismiss();
+                popLongClickWindow.dismiss();
             }
         });
         delButton.setOnClickListener(new OnClickListener(){
             public void onClick(View v){
                 removeTopic();
-                popControlWindow2.dismiss();
+                popLongClickWindow.dismiss();
             }
         });
-        popControlWindow2.update();
+        popLongClickWindow.update();
     }
 
     private void refreshListAllView(String dateSort) {

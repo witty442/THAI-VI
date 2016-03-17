@@ -36,7 +36,7 @@
             android:text="Page" 
             android:textSize="16dp"
             android:textStyle="bold"
-            android:textColor="@color/font_color_white"
+            android:textColor="@color/font_color_yellow_1"
             android:layout_gravity="center|center_horizontal"
             android:layout_marginRight="2dp"
            />

@@ -147,11 +147,14 @@ public class FeedItemAdapter extends ArrayAdapter<Display> {
                         if( !"".equals(Utils.isNull(contentArr[i]))){
                             TextView textView = new TextView(context);
                             textView.setText(contentArr[i]);
+
                             if(i==0){
                                 textView.setTextAppearance(context.getApplicationContext(), R.style.style_display_content);
+                                textView.setTextColor(context.getResources().getColor(R.color.font_color_yellow_1));
                             }else{
                                 textView.setTextSize(control.getTextSize()-4);
                                 textView.setTextAppearance(context.getApplicationContext(), R.style.item_view_content_title);
+                                textView.setTextColor(context.getResources().getColor(R.color.font_color_yellow_1));
                             }
 
                             textView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
@@ -176,6 +179,7 @@ public class FeedItemAdapter extends ArrayAdapter<Display> {
                     textView.setText(Html.fromHtml(disp.getContent()));
                     //set style
                     textView.setTextAppearance(context.getApplicationContext(), R.style.style_display_content);
+                    textView.setTextColor(context.getResources().getColor(R.color.font_color_yellow_1));
                     textView.setTextSize(control.getTextSize());
                     textView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
 
@@ -202,6 +206,7 @@ public class FeedItemAdapter extends ArrayAdapter<Display> {
 
                                 //set style
                                 textView.setTextAppearance(context.getApplicationContext(), R.style.style_display_content);
+                                textView.setTextColor(context.getResources().getColor(R.color.font_color_yellow_1));
                                 textView.setTextSize(control.getTextSize());
                                 textView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
 
@@ -256,28 +261,15 @@ public class FeedItemAdapter extends ArrayAdapter<Display> {
                                 //Add Action Click
                                 textView.setOnClickListener(new OnClickListener(){
                                     public void onClick(View v){
-			              	            	/*if(linkUrl.indexOf("board.thaivi.org") != -1){
-			              	            		
-			              	            		Intent intent = new Intent(context, FeedItemLinkActivity.class);
-			              	            		intent.putExtra("FEED", currentFeed);
-				              	      			intent.putExtra("TOPIC_CUR_PAGE", topicCurPage);
-				              	      	        intent.putExtra("ACTION", "NO_FRESH");
-				              	      	        intent.putExtra("listViewIndex", listViewIndex);
-				              	      	        intent.putExtra("listViewTop", listViewTop);
-				              	      	        intent.putExtra("listViewIndex_FeedMain", listViewIndex_FeedMain);
-				              	      			intent.putExtra("listViewTop_FeedMain", listViewTop_FeedMain);
-				              	      			
-				              	      		    context.startActivity(intent);
-				              	      		    
-			              	            	}else{*/
                                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkUrl));
                                         context.startActivity(browserIntent);
-                                        //}
+
                                     }
                                 });
 
                                 //set style
                                 textView.setTextAppearance(context.getApplicationContext(), R.style.style_display_content);
+                                textView.setTextColor(context.getResources().getColor(R.color.font_color_yellow_1));
                                 textView.setTextSize(control.getTextSize());
                                 textView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
 
@@ -312,8 +304,8 @@ public class FeedItemAdapter extends ArrayAdapter<Display> {
                                         Bitmap bmp = null;
                                         if( c.isImageLocal()){
                                             if(c.isThaiviIcon()){
-                                                bmp = FeedItemAdapterHelper.displayIcon(context,bmp,c.getImageUrl());
-                                                imageView.setImageBitmap(bmp);
+                                               // bmp = FeedItemAdapterHelper.displayIcon(context,bmp,c.getImageUrl());
+                                               // imageView.setImageBitmap(bmp);
                                             }
                                         }else if( !c.isImageLocal()){ //Image Online
                                             new DownloadImagesTask().execute(imageView,jsoupAuthen,c);

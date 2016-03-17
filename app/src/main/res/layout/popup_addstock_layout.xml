@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_green_1"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"  android:background="@color/color_green_1">
+        <TextView
+            android:id="@id/android:empty"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            style="@style/item_selected_title"
+            android:text="ค้นหา หุ้นที่ต้องการ บุ็คมาร์ค."
+            android:textColor="@color/bg_color_black"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_green_1">
+        <EditText
+            android:id="@+id/searchText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:textColor="@color/bg_color_black"
+            android:textColorHint="@color/bg_color_black"
+            android:ems="60"
+            android:hint="Stock Name" >
+            <requestFocus />
+        </EditText>
+     </LinearLayout>
+
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:layout_gravity="center_horizontal"
+         android:weightSum="1"
+         android:background="@color/color_green_1">
+        <Button
+            android:id="@+id/searchBtn"
+            android:text=" ค้นหา "
+            style="@style/button_text_control"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_gravity="left"
+            android:textColor="@color/bg_color_yellow"
+            android:layout_weight="0.19" />
+        <Button
+            android:id="@+id/backBtn"
+            android:text=" Back "
+            style="@style/button_text_control"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_gravity="left"
+            android:textColor="@color/bg_color_yellow"
+            android:layout_weight="0.25" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"  android:background="@color/color_green_1">
+        <TextView
+            android:id="@+id/empty2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/bg_color_black"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text=""/>
+    </LinearLayout>
+
+      <ListView
+          android:id="@+id/stockListView"
+          android:layout_marginLeft="50dp"
+          android:layout_marginRight="50dp"
+          android:layout_width="match_parent"
+          android:layout_height="fill_parent"
+          android:cacheColorHint="@color/color_green_1"
+          android:choiceMode="singleChoice"
+          android:layout_gravity="center_horizontal"
+          android:divider="@color/bg_color_black"
+          android:dividerHeight="1dp"
+          android:background="@color/color_green_1"
+          />
+
+   </LinearLayout>
